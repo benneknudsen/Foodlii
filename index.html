@@ -6,26 +6,83 @@
   <title>SINGLE PAGE WEB APP TEMPLATE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="restaurant finder">
-<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
   <link rel="stylesheet" href="css/main.css">
   <link href="https://fonts.googleapis.com/css?family=Yesteryear&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
   <!-- tabbar navigation -->
   <nav id="tabbar" class="tabbar hide">
-    <a href="#about" onclick="showPage('about')">Settings</a>
+    <a href="#settings" onclick="showPage('settings')">Settings</a>
     <a href="#home" onclick="showPage('home')">Home</a>
-    <a href="#profile" onclick="showPage('profile')">Favorites</a>
+    <a href="#favorites" onclick="showPage('favorites')">Favorites</a>
   </nav>
   <!-- pages -->
-  <!-- home page -->
-  <section id="about" class="page settings">
-    <div>
+  <!-- Settings page -->
+  <section id="settings" class="page">
+    <div id="profile" class="profile">
     </div>
+    <div class="discover">
+      <h4> Discover </h4>
+    </div>
+
+    <div class="searcharea">
+      <p>Search Area <span id="demo2"></span></p>
+      <div class="slidecontainer">
+        <input type="range" min="100" max="5000" value="2500" class="slider" id="myRange">
+        <p id="demo"></p>
+      </div>
+    </div>
+    <div class="location">
+      <button>
+        <span>Current location</span>
+        <p>Location</p>
+        <div>
+          <p>
+            Aarhus, Midtjylland
+          </p>
+        </div>
+    </div>
+    </button>
+
+    <div class="clear_history">
+      <button onclick="clearAlert()">Clear discover history</button>
+    </div>
+
+    <div class="contact_law">
+      <h4>Contact</h4>
+    </div>
+
+    <div class="help_rep_law">
+      <button>
+        <p>Help and support</p>
+    </div>
+
+    <div class="help_rep_law">
+      <button>
+        <p>Report an issue</p>
+    </div>
+
+    <div class="contact_law">
+      <h4>Law</h4>
+    </div>
+
+    <div class="help_rep_law">
+      <button>
+        <p>Privacy policy</p>
+    </div>
+
+    <div class="help_rep_law">
+      <button>
+        <p>Terms of Use</p>
+    </div>
+
   </section>
 
-  <!-- about page -->
+  <!-- Home page -->
   <section id="home" class="page">
     <header class="topbar">
       <h2>home</h2>
@@ -41,10 +98,9 @@
     <p id="demo"></p>
   </section>
 
-  <!-- clients page -->
+  <!-- Favorites page -->
 
-  <!-- contact page -->
-  <section id="profile" class="page">
+  <section id="favorites" class="page">
     <header class="topbar">
       <h2>Profile</h2>
       <a class="right" href="#" onclick="logout()">Logout</a>
