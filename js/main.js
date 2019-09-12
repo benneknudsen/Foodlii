@@ -106,3 +106,74 @@ function appendUserData(user) {
     <p>${user.email}</p>
   `;
 }
+
+"use strict"
+let slider = document.getElementById("myRange");
+let output = document.getElementById("demo2");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  let pos = {
+    lat: position.coords.latitude,
+    lng: position.coords.longitude
+  };
+  const proxyurl = "https://cors-anywhere.herokuapp.com/";
+  let posts = [];
+let postFetchUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${pos.lat},${pos.lng}&radius=${slider.value}&type=restaurant&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`;
+console.log(postFetchUrl)
+fetch(proxyurl + postFetchUrl)
+  .then(function(response) {
+    console.log("OK")
+    return response.json();
+  })
+  .then(function(json) {
+
+posts = json.results;
+function shuffle(posts) {
+let currentIndex = posts.length, temporaryValue, randomIndex;
+
+// While there remain elements to shuffle...
+while (0 !== currentIndex) {
+
+// Pick a remaining element...
+randomIndex = Math.floor(Math.random() * currentIndex);
+currentIndex -= 1;
+
+// And swap it with the current element.
+temporaryValue = posts[currentIndex];
+posts[currentIndex] = posts[randomIndex];
+posts[randomIndex] = temporaryValue;
+}
+
+return posts;
+}
+
+// Used like so
+posts = shuffle(posts);
+console.log(posts);
+            appendResults(posts);
+  });
+  function appendResults(posts) {
+    let htmlTemplate = "";
+    for (let post of posts) {
+      console.log("OK3");
+      htmlTemplate += `
+        <article>
+          <p>${post.name}</p>
+        </article>
+      `;
+    }
+    document.querySelector('#demo').innerHTML = htmlTemplate;
+  }
+}
