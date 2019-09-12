@@ -33,7 +33,15 @@
     <header class="topbar">
       <h2>home</h2>
     </header>
-    <p>This is my about page</p>
+
+    <p>Choose your radius and then click the button to get restaurant at your location.</p>
+    <div class="slidecontainer">
+      <input type="range" min="100" max="5000" value="100" class="slider" id="myRange">
+      <p>Value: <span id="demo2"></span></p>
+    </div>
+    <button onclick="getLocation()">Try It</button>
+
+    <p id="demo"></p>
   </section>
 
   <!-- clients page -->
