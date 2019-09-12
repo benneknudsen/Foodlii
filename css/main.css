@@ -27,6 +27,8 @@ h1 {
   letter-spacing: 3px;
 }
 
+
+
 /* ---------- Grid container ---------- */
 .grid-container {
   display: grid;
@@ -53,12 +55,6 @@ header {
 
 .img-col {}
 
-.img-col img {
-  max-width: 200px;
-  margin: 0;
-  position: absolute;
-  bottom: 0;
-}
 
 .grid-container section {
   position: relative;
@@ -102,12 +98,6 @@ header {
   animation: fadeIn 0.4s;
 }
 
-/* ---------- logo styling ---------- */
-.logo {
-  margin: 2em auto;
-  width: 100%;
-  max-width: 300px;
-}
 
 /* ---------- animations ---------- */
 /* fade in */
@@ -176,4 +166,10 @@ header {
 
 .firebaseui-textfield.mdl-textfield .firebaseui-label::after {
   background-color: var(--green);
+}
+
+/* Settings styling */
+.settings h2 {
+text-align: left;
+height: 100px;
 }
