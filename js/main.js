@@ -96,24 +96,27 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 
 // sign out user
+
+
+function appendUserData(user) {
+  document.querySelector('#profile').innerHTML += `
+    <h2>${user.displayName}</h2>
+    <p>${user.email}</p>
+    <a class="right" href="#" onclick="logout()">Logout</a>
+  `;
+}
+
 function logout() {
   firebase.auth().signOut();
 }
 
-function appendUserData(user) {
-  document.querySelector('#profile').innerHTML += `
-    <h3>${user.displayName}</h3>
-    <p>${user.email}</p>
-  `;
-}
 
-"use strict"
 let slider = document.getElementById("myRange");
 let output = document.getElementById("demo2");
-output.innerHTML = slider.value;
+output.innerHTML = slider.value + " m";
 
 slider.oninput = function() {
-  output.innerHTML = this.value;
+  output.innerHTML = this.value + " m";
 }
 function getLocation() {
   if (navigator.geolocation) {
@@ -176,4 +179,8 @@ console.log(posts);
     }
     document.querySelector('#demo').innerHTML = htmlTemplate;
   }
+}
+
+function clearAlert() {
+  alert("Your discover history has been cleared");
 }
