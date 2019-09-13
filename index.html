@@ -34,8 +34,7 @@
     <div class="searcharea">
       <p>Search Area <span id="demo2"></span></p>
       <div class="slidecontainer">
-        <input type="range" min="100" max="5000" value="2500" class="slider" id="myRange">
-        <p id="demo"></p>
+        <input type="range" min="100" max="5000" value="2500" class="slider" id="myRange" onchange="getLocation()">
       </div>
     </div>
     <div class="location">
@@ -86,16 +85,7 @@
 
   <!-- Home page -->
   <section id="home" class="page">
-    <header class="topbar">
-      <h2>home</h2>
-    </header>
 
-    <p>Choose your radius and then click the button to get restaurant at your location.</p>
-    <div class="slidecontainer">
-      <input type="range" min="100" max="5000" value="100" class="slider" id="myRange">
-      <p>Value: <span id="demo2"></span></p>
-    </div>
-    <button onclick="getLocation()">Try It</button>
 
     <p id="demo"></p>
   </section>
@@ -103,10 +93,7 @@
   <!-- Favorites page -->
 
   <section id="favorites" class="page">
-    <header class="topbar">
-      <h2>Profile</h2>
-      <a class="right" href="#" onclick="logout()">Logout</a>
-    </header>
+
 
   </section>
 

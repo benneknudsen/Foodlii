@@ -210,7 +210,7 @@ function showPosition(position) {
     document.querySelector('#demo').innerHTML = htmlTemplate;
   }
 }
-
+getLocation();
 function clearAlert() {
   alert("Your discover history has been cleared");
 }
