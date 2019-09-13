@@ -170,6 +170,22 @@ header {
 
 /* Styling of profile */
 
+.profile_img {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.profile_img img{
+  max-width: 150px;
+  border-radius: 50%;
+}
+
+.profile_img i{
+  font-size: 50px;
+  color: #FA7F48;
+  position: absolute;
+}
+
 .profile {
   text-align: center;
 }
