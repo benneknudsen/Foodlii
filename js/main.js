@@ -144,7 +144,7 @@ output.innerHTML = slider.value + " m";
 slider.oninput = function() {
   output.innerHTML = this.value + " m";
 }
-
+//append nearby restaurants
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
@@ -197,24 +197,29 @@ function showPosition(position) {
       appendResults(posts);
     });
 
-  function appendResults(posts) {
-    let htmlTemplate = "";
-    for (let post of posts) {
-      console.log("OK3");
-      htmlTemplate += `
-        <article>
-          <p>${post.name}</p>
-        </article>
+    function appendResults(posts) {
+     let htmlTemplate = "";
+     for (let post of posts) {
+       console.log("OK3");
+       let image = "";
+     if (post.photos){image = post.photos[0].photo_reference}
+       htmlTemplate += `
+
+        <div class="tinder--card">
+          <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA">
+          <h3>${post.name}</h3>
+          <p>Address: ${post.vicinity}</p>
+        </div>
       `;
     }
     document.querySelector('#demo').innerHTML = htmlTemplate;
   }
 }
-// getLocation();
+
 function clearAlert() {
   alert("Your discover history has been cleared");
 }
-
+function tinder(){
 var tinderContainer = document.querySelector('.tinder');
 var allCards = document.querySelectorAll('.tinder--card');
 var nope = document.getElementById('nope');
@@ -231,7 +236,6 @@ function initCards(card, index) {
 
   tinderContainer.classList.add('loaded');
 }
-
 initCards();
 
 allCards.forEach(function (el) {
@@ -282,6 +286,8 @@ allCards.forEach(function (el) {
   });
 });
 
+
+
 function createButtonListener(love) {
   return function (event) {
     var cards = document.querySelectorAll('.tinder--card:not(.removed)');
@@ -310,3 +316,14 @@ var loveListener = createButtonListener(true);
 
 nope.addEventListener('click', nopeListener);
 love.addEventListener('click', loveListener);
+}
+
+//timeout
+
+let myVar;
+
+function timeOut() {
+  myVar = setTimeout(tinder, 500);
+}
+timeOut();
+getLocation();
