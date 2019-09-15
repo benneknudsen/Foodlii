@@ -100,17 +100,15 @@ firebase.auth().onAuthStateChanged(function(user) {
 const db = firebase.firestore();
 const userRef = db.collection("users");
 
-let selectedUserId = "";
-
 // ========== READ ==========
 // watch the database ref for changes
 userRef.onSnapshot(function(snapshotData) {
   let users = snapshotData.docs;
-  appendUsers(users);
+  // appendUsers(users);
 });
 
 // append users to the DOM
-function appendUsers(users) {
+/* function appendUsers(users) {
   let htmlTemplate = "";
   for (let user of users) {
     htmlTemplate += `
@@ -119,15 +117,21 @@ function appendUsers(users) {
   }
   document.querySelector('#profile_img').innerHTML = htmlTemplate;
 }
-
+*/
 // connects the userId with the Databse
 
 function createDataBase(user){
   let dataId = user.uid;
+  let name = user.displayName;
+  let mail = user.email;
+  console.log(name);
+  console.log(mail);
   console.log(dataId);
 
   db.collection("users").doc(dataId).set({
-    img: ""
+    name: name,
+    mail: mail,
+    uid: dataId
   })
 }
 
