@@ -25,6 +25,8 @@
   <!-- Settings page -->
   <section id="settings" class="page">
     <div id="profile_img" class="profile_img"></div>
+    <div class="change_pic">
+    </div>
     <div id="profile" class="profile">
     </div>
     <div class="discover">
@@ -34,8 +36,10 @@
     <div class="searcharea">
       <p>Search Area <span id="demo2"></span></p>
       <div class="slidecontainer">
-         <!--PUT THIS ONE BACK: onchange="getLocation()" -->
+
+        <!--PUT THIS ONE BACK: onchange="getLocation()" -->
         <input type="range" min="100" max="5000" step="100" value="1500" class="slider" id="myRange">
+
       </div>
     </div>
     <div class="location">
@@ -97,12 +101,13 @@
       <button id="nope"><i class="fas fa-times"></i></button>
       <button id="love"><i class="fa fa-heart"></i></button>
     </div>
-  </div>
+    </div>
   </section>
 
   <!-- Favorites page -->
 
   <section id="favorites" class="page">
+
 
   </section>
 
@@ -128,7 +133,7 @@
   <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
   <!-- main js file -->
   <script src='https://hammerjs.github.io/dist/hammer.min.js'></script>
-  <script rel="preload" src="js/main.js"></script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>
