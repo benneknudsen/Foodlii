@@ -331,7 +331,7 @@ love.addEventListener('click', loveListener);
 let myVar;
 
 function timeOut() {
-  myVar = setTimeout(tinder, 500);
+  myVar = setTimeout(tinder, 2000);
 }
 timeOut();
 getLocation();
