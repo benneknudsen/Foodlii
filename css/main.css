@@ -38,8 +38,7 @@ button {
 
 /* ---------- topbar styling ---------- */
 .topbar {
-  background-color: var(--light-green);
-  color: var(--text-color-light);
+  color: black;
   padding: 13.5px;
   text-transform: uppercase;
 }
@@ -48,6 +47,7 @@ button {
   margin: 0;
   font-weight: 300;
 }
+
 
 /* ---------- header styling ---------- */
 header {
@@ -62,18 +62,21 @@ header {
 
 /* ---------- tabbar styling ---------- */
 .tabbar {
-  background-color: var(--green);
+  position: sticky;
+  background-color: white;
   margin: auto;
   width: 100%;
   text-align: center;
+  z-index: 999;
 }
 
 /* Style the links inside the navigation bar */
 .tabbar a {
   display: inline-block;
-  color: var(--text-color-light);
+  width: 23%;
+  color: black;
   text-align: center;
-  padding: 20px 16px;
+  padding: 15px 16px;
   text-decoration: none;
   font-size: 0.8em;
   letter-spacing: 0.1em;
@@ -82,14 +85,12 @@ header {
 
 /* Change the color of links on hover */
 .tabbar a:hover {
-  background-color: var(--light-grey);
-  color: var(--text-color-dark);
+  color: #EE4C3A;
 }
 
 /* Add a color to the active/current link */
 .tabbar a.active {
-  background-color: var(--light-green);
-  color: var(--text-color-light);
+  color: #EE4C3A;
 }
 
 /* ---------- page styling ---------- */
@@ -333,7 +334,7 @@ header {
 #home{overflow: hidden;}
 .tinder {
   width: 100vw;
-  height: 100vh;
+  height: 91vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -462,4 +463,32 @@ header {
 
 .fa-times {
   color: #CDD6DD;
+}
+
+@media only screen and (min-width: 900px) {
+ .logo {
+   width: 7vw;
+   min-width: 6vw;
+ }
+
+ .fa-cog, .fa-heart {
+   font-size: 2vw;
+
+ }
+
+
+}
+
+
+@media only screen and (max-width: 900px) {
+ .logo {
+   width: 16vw;
+ }
+
+ .fa-cog, .fa-heart {
+   font-size: 4vw;
+
+ }
+
+
 }
