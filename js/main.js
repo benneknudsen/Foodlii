@@ -52,25 +52,26 @@ function showLoader(show) {
 // ========== Firebase sign in functionality ========== //
 
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyBDsmOzscOqD9s6drRG0xX6z5eAG1Wn51o",
-    authDomain: "foodlii.firebaseapp.com",
-    databaseURL: "https://foodlii.firebaseio.com",
-    projectId: "foodlii",
-    storageBucket: "",
-    messagingSenderId: "511622875493",
-    appId: "1:511622875493:web:7d0d7c7e4e3af6b041b98c"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBDsmOzscOqD9s6drRG0xX6z5eAG1Wn51o",
+  authDomain: "foodlii.firebaseapp.com",
+  databaseURL: "https://foodlii.firebaseio.com",
+  projectId: "foodlii",
+  storageBucket: "",
+  messagingSenderId: "511622875493",
+  appId: "1:511622875493:web:7d0d7c7e4e3af6b041b98c"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
 
 // Firebase UI configuration
 const uiConfig = {
   credentialHelper: firebaseui.auth.CredentialHelper.NONE,
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-  firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+    firebase.auth.FacebookAuthProvider.PROVIDER_ID,
     firebase.auth.EmailAuthProvider.PROVIDER_ID
   ],
   signInSuccessUrl: '#home',
@@ -87,6 +88,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     setDefaultPage();
     tabbar.classList.remove("hide");
     appendUserData(user);
+    createDataBase(user);
   } else { // if user is not logged in
     showPage("login");
     tabbar.classList.add("hide");
@@ -95,8 +97,39 @@ firebase.auth().onAuthStateChanged(function(user) {
   showLoader(false);
 });
 
-// sign out user
+const db = firebase.firestore();
+const userRef = db.collection("users");
 
+let selectedUserId = "";
+
+// ========== READ ==========
+// watch the database ref for changes
+userRef.onSnapshot(function(snapshotData) {
+  let users = snapshotData.docs;
+  appendUsers(users);
+});
+
+// append users to the DOM
+function appendUsers(users) {
+  let htmlTemplate = "";
+  for (let user of users) {
+    htmlTemplate += `
+      <img src="${user.data().img}">
+    `;
+  }
+  document.querySelector('#profile_img').innerHTML = htmlTemplate;
+}
+
+// connects the userId with the Databse
+
+function createDataBase(user){
+  let dataId = user.uid;
+  console.log(dataId);
+
+  db.collection("users").doc(dataId).set({
+    img: ""
+  })
+}
 
 function appendUserData(user) {
   document.querySelector('#profile').innerHTML += `
@@ -105,6 +138,7 @@ function appendUserData(user) {
     <a class="right" href="#" onclick="logout()">Logout</a>
   `;
 }
+// sign out user
 
 function logout() {
   firebase.auth().signOut();
@@ -118,6 +152,7 @@ output.innerHTML = slider.value + " m";
 slider.oninput = function() {
   output.innerHTML = this.value + " m";
 }
+
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
@@ -133,40 +168,43 @@ function showPosition(position) {
   };
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
   let posts = [];
-let postFetchUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${pos.lat},${pos.lng}&radius=${slider.value}&type=restaurant&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`;
-console.log(postFetchUrl)
-fetch(proxyurl + postFetchUrl)
-  .then(function(response) {
-    console.log("OK")
-    return response.json();
-  })
-  .then(function(json) {
+  let postFetchUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${pos.lat},${pos.lng}&radius=${slider.value}&type=restaurant&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`;
+  console.log(postFetchUrl)
+  fetch(proxyurl + postFetchUrl)
+    .then(function(response) {
+      console.log("OK")
+      return response.json();
+    })
+    .then(function(json) {
 
-posts = json.results;
-function shuffle(posts) {
-let currentIndex = posts.length, temporaryValue, randomIndex;
+      posts = json.results;
 
-// While there remain elements to shuffle...
-while (0 !== currentIndex) {
+      function shuffle(posts) {
+        let currentIndex = posts.length,
+          temporaryValue, randomIndex;
 
-// Pick a remaining element...
-randomIndex = Math.floor(Math.random() * currentIndex);
-currentIndex -= 1;
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
 
-// And swap it with the current element.
-temporaryValue = posts[currentIndex];
-posts[currentIndex] = posts[randomIndex];
-posts[randomIndex] = temporaryValue;
-}
+          // Pick a remaining element...
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex -= 1;
 
-return posts;
-}
+          // And swap it with the current element.
+          temporaryValue = posts[currentIndex];
+          posts[currentIndex] = posts[randomIndex];
+          posts[randomIndex] = temporaryValue;
+        }
 
-// Used like so
-posts = shuffle(posts);
-console.log(posts);
-            appendResults(posts);
-  });
+        return posts;
+      }
+
+      // Used like so
+      posts = shuffle(posts);
+      console.log(posts);
+      appendResults(posts);
+    });
+
   function appendResults(posts) {
     let htmlTemplate = "";
     for (let post of posts) {
@@ -180,7 +218,7 @@ console.log(posts);
     document.querySelector('#demo').innerHTML = htmlTemplate;
   }
 }
-
+getLocation();
 function clearAlert() {
   alert("Your discover history has been cleared");
 }

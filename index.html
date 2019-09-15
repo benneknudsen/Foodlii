@@ -8,6 +8,7 @@
   <meta name="description" content="restaurant finder">
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
   <link href="https://fonts.googleapis.com/css?family=Yesteryear&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
@@ -23,6 +24,9 @@
   <!-- pages -->
   <!-- Settings page -->
   <section id="settings" class="page">
+    <div id="profile_img" class="profile_img"></div>
+    <div class="change_pic">
+    </div>
     <div id="profile" class="profile">
     </div>
     <div class="discover">
@@ -32,7 +36,10 @@
     <div class="searcharea">
       <p>Search Area <span id="demo2"></span></p>
       <div class="slidecontainer">
-        <input type="range" min="100" max="5000" value="2500" class="slider" id="myRange">
+
+        <!--PUT THIS ONE BACK: onchange="getLocation()" -->
+        <input type="range" min="100" max="5000" step="100" value="1500" class="slider" id="myRange">
+
       </div>
     </div>
     <div class="location">
@@ -83,26 +90,15 @@
 
   <!-- Home page -->
   <section id="home" class="page">
-    <header class="topbar">
-      <h2>home</h2>
-    </header>
 
-    <p>Choose your radius and then click the button to get restaurant at your location.</p>
-    <div class="slidecontainer">
-      <input type="range" min="100" max="5000" value="100" class="slider" id="myRange">
-      <p>Value: <span id="demo2"></span></p>
-    </div>
-    <button onclick="getLocation()">Try It</button>
+
     <p id="demo"></p>
   </section>
 
   <!-- Favorites page -->
 
   <section id="favorites" class="page">
-    <header class="topbar">
-      <h2>Profile</h2>
-      <a class="right" href="#" onclick="logout()">Logout</a>
-    </header>
+
 
   </section>
 
