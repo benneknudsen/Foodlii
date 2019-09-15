@@ -65,31 +65,6 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-const db = firebase.firestore();
-const userRef = db.collection("users");
-
-let selectedUserID = "";
-let selectedImgFile;
-
-// ========== READ ==========
-// watch the database ref for changes
-userRef.onSnapshot(function(snapshotData) {
-  let users = snapshotData.docs;
-  appendUsers(users);
-});
-
-function appendUsers(users) {
-  let htmlTemplate = "";
-  for (let user of users) {
-    console.log(user.id);
-    console.log(user.data().img);
-    htmlTemplate += `
-      <img src="${user.data().img}">
-        <i class="fas fa-plus"></i>
-    `;
-  }
-  document.querySelector('#profile_img').innerHTML = htmlTemplate;
-}
 
 // Firebase UI configuration
 const uiConfig = {
@@ -113,6 +88,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     setDefaultPage();
     tabbar.classList.remove("hide");
     appendUserData(user);
+    createDataBase(user);
   } else { // if user is not logged in
     showPage("login");
     tabbar.classList.add("hide");
@@ -121,6 +97,39 @@ firebase.auth().onAuthStateChanged(function(user) {
   showLoader(false);
 });
 
+const db = firebase.firestore();
+const userRef = db.collection("users");
+
+let selectedUserId = "";
+
+// ========== READ ==========
+// watch the database ref for changes
+userRef.onSnapshot(function(snapshotData) {
+  let users = snapshotData.docs;
+  appendUsers(users);
+});
+
+// append users to the DOM
+function appendUsers(users) {
+  let htmlTemplate = "";
+  for (let user of users) {
+    htmlTemplate += `
+      <img src="${user.data().img}">
+    `;
+  }
+  document.querySelector('#profile_img').innerHTML = htmlTemplate;
+}
+
+// connects the userId with the Databse
+
+function createDataBase(user){
+  let dataId = user.uid;
+  console.log(dataId);
+
+  db.collection("users").doc(dataId).set({
+    img: ""
+  })
+}
 
 function appendUserData(user) {
   document.querySelector('#profile').innerHTML += `
@@ -129,7 +138,6 @@ function appendUserData(user) {
     <a class="right" href="#" onclick="logout()">Logout</a>
   `;
 }
-
 // sign out user
 
 function logout() {
