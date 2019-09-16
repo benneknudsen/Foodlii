@@ -69,12 +69,11 @@ max-width: 200px;
 
 /* ---------- tabbar styling ---------- */
 .tabbar {
-  position: sticky;
   background-color: white;
   margin: auto;
   width: 100%;
   text-align: center;
-  z-index: 999;
+  overflow: hidden;
 }
 
 /* Style the links inside the navigation bar */
@@ -341,7 +340,7 @@ max-width: 200px;
 #home{overflow: hidden;}
 .tinder {
   width: 100vw;
-  height: 91vh;
+  height: 92vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -400,9 +399,9 @@ max-width: 200px;
 
 .tinder--card {
   display: inline-block;
-  width: 90vw;
+  width: 93vw;
   max-width: 400px;
-  height: 70vh;
+  height: 65vh;
   background: #FFFFFF;
   padding-bottom: 40px;
   border-radius: 8px;
@@ -475,8 +474,8 @@ max-width: 200px;
 
 @media only screen and (min-width: 900px) {
  .logo {
-   width: 7vw;
-   min-width: 6vw;
+   width: 6vw;
+   min-width: 5vw;
  }
 
  .fa-cog, .fa-heart {
@@ -490,7 +489,7 @@ max-width: 200px;
 
 @media only screen and (max-width: 900px) {
  .logo {
-   width: 16vw;
+   width: 14vw;
  }
 
  .fa-cog, .fa-heart {
