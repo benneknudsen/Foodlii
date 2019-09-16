@@ -38,9 +38,8 @@ button {
 
 /* ---------- topbar styling ---------- */
 .topbar {
-  color: black;
+    color: white;
   padding: 13.5px;
-  text-transform: uppercase;
 }
 
 .topbar h2 {
@@ -58,6 +57,14 @@ header {
 
 .grid-container section {
   position: relative;
+}
+
+.loogin {
+max-width: 200px;
+}
+
+.looogin {
+  text-align: center;
 }
 
 /* ---------- tabbar styling ---------- */
