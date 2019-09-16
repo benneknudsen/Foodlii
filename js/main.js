@@ -124,7 +124,6 @@ userRef.onSnapshot(function(snapshotData) {
 // connects the userId with the Databse
 
 
-
 function createDataBase(user){
 
   let name = user.displayName;
@@ -138,12 +137,13 @@ function createDataBase(user){
   })
 }
 
-function saveRestaurant() {
+function saveRestaurant(id) {
 
   db.collection("users").doc(userId).set({
-
-  })
-
+    myFavorites: firebase.firestore.FieldValue.arrayUnion(id)
+  }, {
+    merge: true
+  });
 }
 
 
@@ -232,7 +232,7 @@ function showPosition(position) {
      if (post.photos){image = post.photos[0].photo_reference}
        htmlTemplate += `
 
-        <div class="tinder--card">
+        <div class="tinder--card" id='${post.place_id}'>
           <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA">
           <h3>${post.name}</h3>
           <p>Address: ${post.vicinity}</p>
@@ -282,6 +282,7 @@ function createButtonListener(love) {
     if (love) {
       card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
       console.log("liked")
+      saveRestaurant(card.id)
     } else {
       card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
       console.log("disliked")
