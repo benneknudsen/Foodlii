@@ -102,6 +102,7 @@ max-width: 200px;
 /* ---------- page styling ---------- */
 .page {
   display: none;
+  height: 90vh;
   background: var(--light-grey);
   animation: fadeIn 0.4s;
 }
