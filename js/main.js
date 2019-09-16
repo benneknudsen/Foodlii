@@ -78,6 +78,7 @@ const uiConfig = {
 };
 
 // Init Firebase UI Authentication
+let userId = "";
 const ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 // Listen on authentication state change
@@ -86,11 +87,13 @@ firebase.auth().onAuthStateChanged(function(user) {
   console.log(user);
   if (user) { // if user exists and is authenticated
     setDefaultPage();
+    userId = user.uid;
     tabbar.classList.remove("hide");
     appendUserData(user);
     createDataBase(user);
   } else { // if user is not logged in
     showPage("login");
+    userId = "";
     tabbar.classList.add("hide");
     ui.start('#firebaseui-auth-container', uiConfig);
   }
@@ -120,20 +123,32 @@ userRef.onSnapshot(function(snapshotData) {
 */
 // connects the userId with the Databse
 
+
+
 function createDataBase(user){
-  let dataId = user.uid;
+
   let name = user.displayName;
   let mail = user.email;
   console.log(name);
   console.log(mail);
-  console.log(dataId);
 
-  db.collection("users").doc(dataId).set({
+  db.collection("users").doc(userId).set({
     name: name,
     mail: mail,
-    uid: dataId
   })
 }
+
+function saveRestaurant() {
+
+  db.collection("users").doc(userId).set({
+
+  })
+
+}
+
+
+
+
 
 function appendUserData(user) {
   document.querySelector('#profile').innerHTML += `
@@ -221,6 +236,7 @@ function showPosition(position) {
           <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA">
           <h3>${post.name}</h3>
           <p>Address: ${post.vicinity}</p>
+          <p>Rating: ${post.rating}</p>
         </div>
       `;
     }
