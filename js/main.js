@@ -226,33 +226,34 @@ function showPosition(position) {
     document.querySelector('#demo').innerHTML = htmlTemplate;
   }
 }
-userRef.onSnapshot(function(snapshotData) {
+/* userRef.onSnapshot(function(snapshotData) {
   let myFavorites = snapshotData.docs;
 //  fetchfavorites(myFavorites);
   console.log(myFavorites);
-});
-let docRef = db.collection("users").doc("Dr2sskFU6Kfz1xiVwlEMwwLJXWP2");
-let filteredFavorites;
-docRef.get().then(function(doc) {
-    if (doc.exists) {
-      filteredFavorites = doc.data();
-        console.log("Document data:", filteredFavorites)
-        ;
-    } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-    }
-}).catch(function(error) {
-    console.log("Error getting document:", error);
-});
+}); */
+
 //fetch favorites
- function fetchfavorites(filteredFavorites) {
+ function fetchfavorites() {
+   let docRef = db.collection("users").doc("Dr2sskFU6Kfz1xiVwlEMwwLJXWP2");
+   let filteredFavorites;
+   docRef.get().then(function(doc) {
+       if (doc.exists) {
+         filteredFavorites = doc.data();
+           console.log("Document data:", filteredFavorites)
+           ;
+       } else {
+           // doc.data() will be undefined in this case
+           console.log("No such document!");
+       }
+   }).catch(function(error) {
+       console.log("Error getting document:", error);
+   });
  for (let filteredFavorite of filteredFavorites) {
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 let posts = [];
-let postFetchUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${filteredFavorite}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`;
+let postFetchUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=something&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`;
 console.log(postFetchUrl)
-fetch(proxyurl + postFetchUrl)
+/* fetch(proxyurl + postFetchUrl)
   .then(function(response) {
     return response.json();
   })
@@ -279,7 +280,7 @@ fetch(proxyurl + postFetchUrl)
     `;
   }
   document.querySelector('#demo').innerHTML = htmlTemplate;
-}
+}*/
 }
 }
 
@@ -349,3 +350,4 @@ function timeOut() {
 }
 timeOut();
 getLocation();
+fetchfavorites();
