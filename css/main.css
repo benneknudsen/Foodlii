@@ -9,7 +9,7 @@
 
 /* ---------- general styling ---------- */
 html {
-  background-color: #F6F6F6;
+  background-color: #f1f1f4;
   color: var(--text-color-dark);
   font-family: 'Montserrat', sans-serif;
   height: 100%;
@@ -50,7 +50,7 @@ button {
 
 /* ---------- header styling ---------- */
 header {
-  background-color: var(--green);
+  background-color: #f1f1f4;
 }
 
 .img-col {}
@@ -410,8 +410,7 @@ max-width: 200px;
   position: absolute;
   will-change: transform;
   transition: all 0.3s ease-in-out;
-  cursor: -webkit-grab;
-  cursor: grab;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .moving.tinder--card {
@@ -430,6 +429,8 @@ max-width: 200px;
   font-size: 32px;
   padding: 0 16px;
   pointer-events: none;
+  color: darkorange;
+
 }
 
 .tinder--card p {
@@ -453,6 +454,7 @@ max-width: 200px;
   background: #FFFFFF;
   display: inline-block;
   margin: 0 55px;
+  cursor: pointer;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
@@ -466,11 +468,11 @@ max-width: 200px;
 }
 
 .fa-heart {
-  color: #FFACE4;
+  color: darkorange;
 }
 
 .fa-times {
-  color: #CDD6DD;
+  color: darkred;
 }
 
 @media only screen and (min-width: 900px) {
@@ -479,7 +481,7 @@ max-width: 200px;
    min-width: 5vw;
  }
 
- .fa-cog, .fa-heart {
+ .fa-cog, .fa-list-alt {
    font-size: 2vw;
 
  }
@@ -493,7 +495,7 @@ max-width: 200px;
    width: 14vw;
  }
 
- .fa-cog, .fa-heart {
+ .fa-cog, .fa-list-alt  {
    font-size: 4vw;
 
  }
