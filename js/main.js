@@ -213,7 +213,7 @@ function showPosition(position) {
           <img class="card-img" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA">
           <div class="card-information">
           <h3>${post.name}</h3>
-          <p>Rating: ${post.rating}</p>
+          <p>Rating: <span>${post.rating} </span></p>
           </div>
           </div>
         </div>
