@@ -264,14 +264,19 @@ function showPosition(position) {
              if (favorites.result.photos){image = favorites.result.photos[0].photo_reference}
                document.querySelector('#fetchfavorite').innerHTML += `
 
-                <div class="fav-container">
+                <div onclick="showPage('button_${favorites.result.place_id}')" class="fav-container">
+                <div>
+<i class="fas fa-trash"></i>
+                </div>
                 <div class="fav-image">
                   <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA">
                 </div>
                 <div class="fav-name">
-                  <p><span class="big-text">${favorites.result.name}</span> <br>  "Open/closed"</p>
+                  <p class="big-text">${favorites.result.name} <br>  "Open/closed"</p>
                 </div>
-                <button onclick="showPage('button_${favorites.result.place_id}')">
+                <div>
+                <i class="fas fa-angle-right"></i>
+                </div>
                 </div>
               `;
           }
