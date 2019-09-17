@@ -225,7 +225,7 @@ rating ="No rating"
           <img class="card-img" src="${image}">
           <div class="card-information">
           <h3>${post.name}</h3>
-          <p>Rating: <span>${rating} </span></p>
+          <p>Rating: <span>${rating} / 5 </span></p>
           </div>
           </div>
         </div>
@@ -333,16 +333,17 @@ open = "Closed";
 
              document.querySelector('#detailedView').innerHTML += `
               <section id="button_${favorites.result.place_id}" class="page">
-
+<div>
               <h3>${favorites.result.name}</h3>
-              <p>${rating}</p>
+              <p>${rating} out of 5 (${favorites.result.user_ratings_total} ratings)</p>
               <img src="${image}">
               <p>${open}</p>
               <p>${favorites.result.formatted_address}</p>
               <p>${favorites.result.formatted_phone_number}</p>
-              <p>${website}</p>
+              <a href="${website}">Website</a>
               <a href="https://www.google.com/maps/dir/?api=1&origin=&destination=${favorites.result.geometry.location.lat},${favorites.result.geometry.location.lng}">try me</a>
 <i class="fas fa-angle-right"  onclick="showPage('favorites')" ></i>
+</div>
               </section>
 
             `;
