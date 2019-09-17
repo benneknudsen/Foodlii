@@ -39,7 +39,7 @@ button {
 /* ---------- topbar styling ---------- */
 .topbar {
     color: white;
-  padding: 13.5px;
+  padding: 11px;
 }
 
 .topbar h2 {
@@ -63,6 +63,11 @@ header {
 max-width: 200px;
 }
 
+.profile_user {
+max-width: 100px;
+}
+
+
 .looogin {
   text-align: center;
 }
@@ -79,7 +84,7 @@ max-width: 200px;
 /* Style the links inside the navigation bar */
 .tabbar a {
   display: inline-block;
-  width: 23%;
+  width: 24%;
   color: black;
   text-align: center;
   padding: 15px 16px;
@@ -91,12 +96,12 @@ max-width: 200px;
 
 /* Change the color of links on hover */
 .tabbar a:hover {
-  color: #EE4C3A;
+  color: #FA7F48;
 }
 
 /* Add a color to the active/current link */
 .tabbar a.active {
-  color: #EE4C3A;
+  color: #FA7F48;
 }
 
 /* ---------- page styling ---------- */
@@ -461,6 +466,10 @@ max-width: 200px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
+.tinder--buttons button:active {
+  transform: translateY(4px);
+}
+
 .tinder--buttons button:focus {
   outline: 0;
 }
@@ -471,7 +480,7 @@ max-width: 200px;
 }
 
 .fa-heart {
-  color: darkorange;
+  color: #FA7F48;
 }
 
 .fa-times {
@@ -499,12 +508,11 @@ height: 600px;
 
 @media only screen and (min-width: 900px) {
  .logo {
-   width: 6vw;
-   min-width: 5vw;
+  width: 95px;
  }
 
- .fa-cog, .fa-list-alt {
-   font-size: 2vw;
+ .fa-user, .fa-list-alt {
+   font-size: 30px;
 
  }
 
@@ -514,11 +522,11 @@ height: 600px;
 
 @media only screen and (max-width: 900px) {
  .logo {
-   width: 14vw;
+   width: 90px;
  }
 
- .fa-cog, .fa-list-alt  {
-   font-size: 4vw;
+ .fa-user, .fa-list-alt  {
+   font-size: 25px;
 
  }
 
