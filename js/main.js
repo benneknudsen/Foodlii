@@ -90,7 +90,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     userId = user.uid;
     tabbar.classList.remove("hide");
     appendUserData(user)
-    fetchfavorites();
+    update(user);
   } else { // if user is not logged in
     showPage("login");
     userId = "";
@@ -101,25 +101,16 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 const db = firebase.firestore();
 const userRef = db.collection("users");
-
-// ========== READ ==========
-// watch the database ref for changes
-
-
-// append users to the DOM
-/* function appendUsers(users) {
-  let htmlTemplate = "";
-  for (let user of users) {
-    htmlTemplate += `
-      <img src="${user.data().img}">
-    `;
-  }
-  document.querySelector('#profile_img').innerHTML = htmlTemplate;
+function update(user){
+userRef.doc(userId).onSnapshot({
+    includeMetadataChanges: true
+  }, function(doc) {
+    if (!doc.metadata.hasPendingWrites && doc.data()) {
+      emtpyTemplate();
+      fetchfavorites(doc.data().myFavorites);
+    }
+  });
 }
-*/
-// connects the userId with the Databse
-
-
 function saveRestaurant(id) {
 
   db.collection("users").doc(userId).set({
@@ -261,29 +252,24 @@ function showPosition(position) {
               return response.json();
             })
             .then(function(json) {
-
               favorites = json;
-              console.log(json);
               appendFavorites(favorites);
             });
-
+          }
             function appendFavorites(favorites) {
              let htmlTemplate = "";
-               console.log("fetched favorites");
+             console.log(favorites);
                let image = "";
              if (favorites.result.photos){image = favorites.result.photos[0].photo_reference}
-               htmlTemplate += `
+               document.querySelector('#fetchfavorite').innerHTML += `
 
                 <div>
                   <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA">
                   <h3>${favorites.result.name}</h3>
                 </div>
               `;
-
-            document.querySelector('#fetchfavorite').innerHTML += htmlTemplate;
           }
 
-          }
            ;
        } else {
            // doc.data() will be undefined in this case
@@ -294,15 +280,9 @@ function showPosition(position) {
    });
 
 }
-
-function emptyTemplate(){
-  let emptyTemplate = "";
-  emptyTemplate += `
- `;
-  console.log("empty");
-  document.querySelector('#fetchfavorite').innerHTML += emptyTemplate;
-};
-
+function emtpyTemplate(){
+                document.querySelector("#fetchfavorite").innerHTML = "";
+}
 function clearAlert() {
   alert("Your discover history has been cleared");
 }
@@ -370,4 +350,3 @@ function timeOut() {
 }
 timeOut();
 getLocation();
-fetchfavorites();
