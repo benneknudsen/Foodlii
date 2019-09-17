@@ -533,8 +533,6 @@ max-width: 100px;
 /* =============== Favorite list styling ============= */
 .fav-container {
   background-color: white;
-  border-left: 2px solid grey;
-  border-right: 2px solid grey;
   border-top: 2px solid grey;
   font-family: Montserrat;
   padding-top: 5px;
@@ -560,13 +558,33 @@ max-width: 100px;
 
 }
 
-.fav-name p {
+.fav-name  {
   margin-left: 20px;
   font-size: 14px;
+  white-space: nowrap;
+  width: 60%;
+  overflow: hidden;
+  text-align: left;
 }
 
-.big-text {
+.fav-name p {
+  text-overflow: ellipsis;
+}
+
+.fa-trash {
   font-size: 20px;
+  padding-left: 6px;
+  margin-top: 20px;
+  opacity: 0.3;
+  color: darkred;
+}
+
+.fa-angle-right {
+  font-size: 25px;
+text-align: right;
+  margin-top: 20px;
+  opacity: 0.8;
+  color: #FA7F48;
 }
 
 
