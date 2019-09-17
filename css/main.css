@@ -18,6 +18,11 @@ html {
 
 }
 
+a {
+  color: black;
+  text-decoration: none;
+}
+
 body {
   margin: 0;
 }
@@ -458,12 +463,12 @@ max-width: 100px;
 
 .tinder--card h3 {
   margin: 0px;
-  font-size: 28px;
+  font-size: 24px;
   padding: 20px 16px;
   pointer-events: none;
   color: black;
   float: left;
-  font-family: 'Lobster', cursive;
+  font-family: 'Playfair Display', serif;
   white-space: nowrap;
   width: 100%;
   overflow: hidden;
@@ -494,7 +499,7 @@ max-width: 100px;
 .tinder--buttons button {
   border-radius: 50%;
   line-height: 60px;
-  width: 60px;
+  width: 65px;
   border: 0;
   background: #FFFFFF;
   display: inline-block;
@@ -512,7 +517,7 @@ max-width: 100px;
 }
 
 .tinder--buttons i {
-  font-size: 32px;
+  font-size: 38px;
   vertical-align: middle;
 }
 
@@ -583,8 +588,11 @@ max-width: 100px;
   text-align: left;
 }
 
-.fav-name p {
+.favorite_header {
+  font-weight: 700;
   text-overflow: ellipsis;
+  width: 90%;
+  overflow: hidden;
 }
 
 .fa-trash {
@@ -606,11 +614,18 @@ max-width: 100px;
 
 
 .detail {
-  text-align: center;
-  margin-top: 30px;
   background-color: #fff;
-  width: 93vw;
-  max-width: 400px;
+  padding-bottom: 50px;
+
+}
+
+.detailtext {
+  text-align: left;
+  padding: 0px 20px;
+}
+
+.detailtext h3 {
+  color: #FA7F48;
 }
 
 .detailimg {
@@ -620,18 +635,44 @@ max-width: 100px;
 
 .detailimg img {
   max-width: 100%;
+  box-shadow: 0px 0px 5px #555;
 }
 
-.fa-clock
-.fa-map-marker-alt
-.fa-phone {
-  padding-left: 15px;
+.page detail_container {
+  text-align: center;
+}
+
+.detailtext i {
+  color: #555;
   padding-right: 15px;
+}
+
+.klode  {
+  font-size: 20px;
+  padding-right: 0px;
+}
+
+.website_button {
+  text-decoration: underline;
 }
 
   .logo {
     width: 95px;
 
+  }
+
+  .reload_text {
+    font-size: 24px;
+  }
+
+  .fa-redo {
+    position: absolute;
+    top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  font-size: 100px;
+  color: #FA7F48;
   }
 
   .fa-user, .fa-list-alt {

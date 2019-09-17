@@ -128,6 +128,11 @@ function removeFromFavourites(id) {
   });
 }
 
+function removeAllFavourites(id){
+  db.collection("users").doc(userId).set({
+
+  });
+}
 
 function appendUserData(user) {
   document.querySelector('#profile').innerHTML += `
@@ -218,7 +223,7 @@ function showPosition(position) {
       if (post.rating) {
         rating = `${post.rating}`
       } else {
-        rating = "No rating"
+        rating = "NA"
       }
       htmlTemplate += `
 
@@ -285,7 +290,7 @@ function fetchfavorites() {
         if (favorites.result.rating) {
           rating = `${favorites.result.rating}`
         } else {
-          rating = "No rating"
+          rating = "NA"
         }
         let open = "";
         if (favorites.result.opening_hours.open_now) {
@@ -305,7 +310,7 @@ function fetchfavorites() {
                 </div>
                 <div class="fav-name" onclick="showPage('button_${favorites.result.place_id}')">
 
-                <p>${favorites.result.name}</p><p> ${open}</p>
+                <p class="favorite_header">${favorites.result.name}</p><p> ${open}</p>
 
                 </div>
                 <div>
@@ -327,7 +332,7 @@ function fetchfavorites() {
         if (favorites.result.rating) {
           rating = `${favorites.result.rating}`
         } else {
-          rating = "No rating"
+          rating = "NA"
         }
         let open = "";
         if (favorites.result.opening_hours.open_now) {
@@ -339,23 +344,24 @@ function fetchfavorites() {
         if (favorites.result.website) {
           website = `${favorites.result.website}`
         } else {
-          website = "No website";
+          website = "#home";
         }
 
         document.querySelector('#detailedView').innerHTML += `
-              <section id="button_${favorites.result.place_id}" class="page">
+              <section id="button_${favorites.result.place_id}" class="page detail_container">
               <div class="detail">
                 <div class="detailimg">
                   <img src="${image}">
                 </div>
+                <div class="detailtext">
               <h3>${favorites.result.name}</h3>
-              <p>${rating} out of 5 (${favorites.result.user_ratings_total} ratings)</p>
+              <p><i class="fas fa-star"></i>${rating} out of 5 (${favorites.result.user_ratings_total} ratings)</p>
               <p><i class="fas fa-clock"></i>${open}</p>
               <p><i class="fas fa-map-marker-alt"></i>${favorites.result.formatted_address}</p>
               <p><i class="fas fa-phone"></i>${favorites.result.formatted_phone_number}</p>
-              <a href="${website}">Website</a>
-              <a href="https://www.google.com/maps/dir/?api=1&origin=&destination=${favorites.result.geometry.location.lat},${favorites.result.geometry.location.lng}">try me</a>
-              <i class="fas fa-angle-right"  onclick="showPage('favorites')" ></i>
+              <a class="website_button" href="${website}" target="_blank"><i class="fas fa-globe-europe klode" ></i>Visit website</a> <br><br>
+              <a class="website_button" href="https://www.google.com/maps/dir/?api=1&origin=&destination=${favorites.result.geometry.location.lat},${favorites.result.geometry.location.lng}" target="_blank"><i class="fas fa-location-arrow klode"></i>Navigate</a>
+              </div>
               </div>
               </section>
 
