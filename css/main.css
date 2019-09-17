@@ -71,6 +71,7 @@ header {
   width: 100%;
   text-align: center;
   overflow: hidden;
+  border-bottom: 1px solid #555;
 }
 
 /* Style the links inside the navigation bar */
@@ -409,7 +410,6 @@ max-width: 100px;
 .tinder--cards {
   flex-grow: 1;
   padding-top: 40px;
-  text-align: center;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -510,17 +510,18 @@ max-width: 100px;
   color: darkred;
 }
 
+.card-img-container {
+  max-width: 100%;
+  height: 100%;
+}
+
 .card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  overflow: hidden;
 }
 
-.card-img-container {
-  width: 600px;
-  height: 600px;
-}
+
 
 .card-information {
   position: absolute;
@@ -587,24 +588,11 @@ text-align: right;
   color: #FA7F48;
 }
 
-
-
-@media only screen and (min-width: 900px) {
   .logo {
     width: 95px;
+
   }
 
   .fa-user, .fa-list-alt {
     font-size: 30px;
   }
-}
-
-@media only screen and (max-width: 900px) {
-  .logo {
-    width: 90px;
-  }
-
-  .fa-user, .fa-list-alt {
-    font-size: 25px;
-  }
-}
