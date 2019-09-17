@@ -299,7 +299,8 @@ open = "Closed";
                   <img src="${image}">
                 </div>
                 <div class="fav-name" onclick="showPage('button_${favorites.result.place_id}')">
-                <p class="big-text">${favorites.result.name} <br> ${open}</p>
+                <p>${favorites.result.name}</p>
+                <p>${open}</p>
                 </div>
                 <div>
                 <i class="fas fa-angle-right"  onclick="showPage('button_${favorites.result.place_id}')" ></i>
