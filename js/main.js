@@ -304,7 +304,7 @@ function fetchfavorites() {
                   <img src="${image}">
                 </div>
                 <div class="fav-name" onclick="showPage('button_${favorites.result.place_id}')">
-                <p class="big-text">${favorites.result.name} <br> ${open}</p>
+                <p>${favorites.result.name}</p><p> ${open}</p>
                 </div>
                 <div>
                 <i class="fas fa-angle-right"  onclick="showPage('button_${favorites.result.place_id}')" ></i>
@@ -348,9 +348,9 @@ function fetchfavorites() {
                 </div>
               <h3>${favorites.result.name}</h3>
               <p>${rating} out of 5 (${favorites.result.user_ratings_total} ratings)</p>
-              <p>${open}</p>
-              <p>${favorites.result.formatted_address}</p>
-              <p>${favorites.result.formatted_phone_number}</p>
+              <p><i class="fas fa-clock"></i>${open}</p>
+              <p><i class="fas fa-map-marker-alt"></i>${favorites.result.formatted_address}</p>
+              <p><i class="fas fa-phone"></i>${favorites.result.formatted_phone_number}</p>
               <a href="${website}">Website</a>
               <a href="https://www.google.com/maps/dir/?api=1&origin=&destination=${favorites.result.geometry.location.lat},${favorites.result.geometry.location.lng}">try me</a>
               <i class="fas fa-angle-right"  onclick="showPage('favorites')" ></i>

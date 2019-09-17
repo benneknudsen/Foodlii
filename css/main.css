@@ -622,6 +622,13 @@ max-width: 100px;
   max-width: 100%;
 }
 
+.fa-clock
+.fa-map-marker-alt
+.fa-phone {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
   .logo {
     width: 95px;
 
