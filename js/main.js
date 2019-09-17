@@ -248,41 +248,43 @@ function showPosition(position) {
        if (doc.exists) {
          filteredFavorites = doc.data().myFavorites;
            console.log("Document data:", filteredFavorites)
+
            for (let filteredFavorite of filteredFavorites) //go through the array and load each placeID separately
             {
               console.log(filteredFavorite);
           const proxyurl = "https://cors-anywhere.herokuapp.com/";
-          let posts = [];
-          let postFetchUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${filteredFavorite}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`;
-          console.log(postFetchUrl)
-          /*fetch(proxyurl + postFetchUrl)
+          let favorites = [];
+          let favoriteFetchUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${filteredFavorite}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`;
+          console.log(favoriteFetchUrl)
+          fetch(proxyurl + favoriteFetchUrl)
             .then(function(response) {
               return response.json();
             })
             .then(function(json) {
 
-              posts = json.results;
-              console.log(myFavorite);
+              favorites = json;
+              console.log(json);
+              appendFavorites(favorites);
             });
 
-            function appendFavorites(posts) {
+            function appendFavorites(favorites) {
              let htmlTemplate = "";
-             for (let post of posts) {
-               console.log("OK3");
+               console.log("fetched favorites");
                let image = "";
-             if (post.photos){image = post.photos[0].photo_reference}
+             if (favorites.result.photos){image = favorites.result.photos[0].photo_reference}
                htmlTemplate += `
 
-                <div class="tinder--card" id='${post.place_id}'>
+                <div>
                   <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA">
-                  <h3>${post.name}</h3>
-                  <p>Address: ${post.vicinity}</p>
-                  <p>Rating: ${post.rating}</p>
+                  <h3>${favorites.result.name}</h3>
+                  <p>Address: ${favorites.result.vicinity}</p>
+                  <p>Rating: ${favorites.result.rating}</p>
                 </div>
               `;
-            }
-            document.querySelector('#demo').innerHTML = htmlTemplate;
-          }*/
+
+            document.querySelector('#fetchfavorite').innerHTML += htmlTemplate;
+          }
+
           }
            ;
        } else {
@@ -294,6 +296,14 @@ function showPosition(position) {
    });
 
 }
+
+function emptyTemplate(){
+  let emptyTemplate = "";
+  emptyTemplate += `
+ `;
+  console.log("empty");
+  document.querySelector('#fetchfavorite').innerHTML += emptyTemplate;
+};
 
 function clearAlert() {
   alert("Your discover history has been cleared");
