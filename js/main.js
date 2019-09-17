@@ -254,6 +254,7 @@ function showPosition(position) {
             .then(function(json) {
               favorites = json;
               appendFavorites(favorites);
+              appendDetails(favorites);
             });
           }
             function appendFavorites(favorites) {
@@ -270,10 +271,20 @@ function showPosition(position) {
                 <div class="fav-name">
                   <p><span class="big-text">${favorites.result.name}</span> <br>  "Open/closed"</p>
                 </div>
+                <button onclick="showPage('button_${favorites.result.place_id}')">
                 </div>
               `;
           }
 
+          function appendDetails(favorites) {
+           let htmlTemplate = "";
+           console.log(favorites);
+             let image = "";
+           if (favorites.result.photos){image = favorites.result.photos[0].photo_reference}
+             document.querySelector('#detailedView').innerHTML += `
+              <section id="button_${favorites.result.place_id}" class="page">why is this shit not working what the fuck is the problem${favorites.result.name}</section>
+            `;
+        }
            ;
        } else {
            // doc.data() will be undefined in this case
