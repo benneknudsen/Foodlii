@@ -71,7 +71,7 @@ header {
   width: 100%;
   text-align: center;
   overflow: hidden;
-  border-bottom: 1px solid #555;
+  border-bottom: 1px solid #B0B0B0;
 }
 
 /* Style the links inside the navigation bar */
@@ -534,7 +534,7 @@ max-width: 100px;
 /* =============== Favorite list styling ============= */
 .fav-container {
   background-color: white;
-  border-top: 2px solid grey;
+  border-bottom: 1px solid #B0B0B0;
   font-family: Montserrat;
   padding-top: 5px;
   color: black;
@@ -545,11 +545,11 @@ max-width: 100px;
 .fav-image {
   display: inline-block;
   position: relative;
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   overflow: hidden;
   border-radius: 50%;
-  left: 10px;
+  left: 20px;
 
 }
 
@@ -560,7 +560,7 @@ max-width: 100px;
 }
 
 .fav-name  {
-  margin-left: 20px;
+  margin-left: 30px;
   font-size: 14px;
   white-space: nowrap;
   width: 60%;
@@ -574,7 +574,7 @@ max-width: 100px;
 
 .fa-trash {
   font-size: 20px;
-  padding-left: 6px;
+  margin-left: 20px;
   margin-top: 20px;
   opacity: 0.3;
   color: darkred;
@@ -584,6 +584,7 @@ max-width: 100px;
   font-size: 25px;
 text-align: right;
   margin-top: 20px;
+  margin-right: 20px;
   opacity: 0.8;
   color: #FA7F48;
 }
