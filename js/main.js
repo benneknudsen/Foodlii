@@ -336,7 +336,9 @@ open = "Closed";
 <div>
               <h3>${favorites.result.name}</h3>
               <p>${rating} out of 5 (${favorites.result.user_ratings_total} ratings)</p>
+              <div class="detailimg">
               <img src="${image}">
+              </div>
               <p>${open}</p>
               <p>${favorites.result.formatted_address}</p>
               <p>${favorites.result.formatted_phone_number}</p>
