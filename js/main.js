@@ -162,6 +162,7 @@ function showPosition(position) {
     lat: position.coords.latitude,
     lng: position.coords.longitude
   };
+
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
   let posts = [];
   let postFetchUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${pos.lat},${pos.lng}&radius=${slider.value}&type=restaurant&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`;
@@ -307,7 +308,7 @@ open = "Closed";
               `;
           }
 
-          function appendDetails(favorites) {
+          function appendDetails(favorites, position) {
            let htmlTemplate = "";
            let image = "";
            let rating= "";
@@ -340,7 +341,7 @@ open = "Closed";
               <p>${favorites.result.formatted_address}</p>
               <p>${favorites.result.formatted_phone_number}</p>
               <p>${website}</p>
-              <a href="https://www.google.com/maps/dir/?api=1&origin=Space+Needle+Seattle+WA&destination=${favorites.result.geometry.location.lat},${favorites.result.geometry.location.lng}">try me</a>
+              <a href="https://www.google.com/maps/dir/?api=1&origin=&destination=${favorites.result.geometry.location.lat},${favorites.result.geometry.location.lng}">try me</a>
 
               </section>
 
