@@ -120,8 +120,11 @@ function saveRestaurant(id) {
   });
 }
 
-
-
+function removeFromFavourites(id) {
+  db.collection("users").doc(userId).update({
+    myFavorites: firebase.firestore.FieldValue.arrayRemove(id)
+  });
+}
 
 
 function appendUserData(user) {
@@ -274,7 +277,7 @@ rating ="No rating"
 
                 <div onclick="showPage('button_${favorites.result.place_id}')" class="fav-container">
                 <div>
-<i class="fas fa-trash"></i>
+<i class="fas fa-trash" onclick="removeFromFavourites('${favorites.result.place_id}')"></i>
                 </div>
                 <div class="fav-image">
                   <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA">
@@ -311,6 +314,7 @@ rating ="No rating"
 function emtpyTemplate(){
                 document.querySelector("#fetchfavorite").innerHTML = "";
 }
+
 function clearAlert() {
   alert("Your discover history has been cleared");
 }
