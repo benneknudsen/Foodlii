@@ -90,6 +90,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     userId = user.uid;
     tabbar.classList.remove("hide");
     appendUserData(user)
+    fetchfavorites();
   } else { // if user is not logged in
     showPage("login");
     userId = "";
@@ -98,7 +99,6 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
   showLoader(false);
 });
-
 const db = firebase.firestore();
 const userRef = db.collection("users");
 
@@ -234,12 +234,48 @@ function showPosition(position) {
 
 //fetch favorites
  function fetchfavorites() {
-   let docRef = db.collection("users").doc("Dr2sskFU6Kfz1xiVwlEMwwLJXWP2");
+   let docRef = db.collection("users").doc(userId); //put userId here
    let filteredFavorites;
    docRef.get().then(function(doc) {
        if (doc.exists) {
-         filteredFavorites = doc.data();
+         filteredFavorites = doc.data().myFavorites;
            console.log("Document data:", filteredFavorites)
+           for (let filteredFavorite of filteredFavorites) //go through the array and load each placeID separately
+            {
+              console.log(filteredFavorite);
+          const proxyurl = "https://cors-anywhere.herokuapp.com/";
+          let posts = [];
+          let postFetchUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${filteredFavorite}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`;
+          console.log(postFetchUrl)
+          /*fetch(proxyurl + postFetchUrl)
+            .then(function(response) {
+              return response.json();
+            })
+            .then(function(json) {
+
+              posts = json.results;
+              console.log(myFavorite);
+            });
+
+            function appendFavorites(posts) {
+             let htmlTemplate = "";
+             for (let post of posts) {
+               console.log("OK3");
+               let image = "";
+             if (post.photos){image = post.photos[0].photo_reference}
+               htmlTemplate += `
+
+                <div class="tinder--card" id='${post.place_id}'>
+                  <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA">
+                  <h3>${post.name}</h3>
+                  <p>Address: ${post.vicinity}</p>
+                  <p>Rating: ${post.rating}</p>
+                </div>
+              `;
+            }
+            document.querySelector('#demo').innerHTML = htmlTemplate;
+          }*/
+          }
            ;
        } else {
            // doc.data() will be undefined in this case
@@ -248,40 +284,7 @@ function showPosition(position) {
    }).catch(function(error) {
        console.log("Error getting document:", error);
    });
- for (let filteredFavorite of filteredFavorites) {
-const proxyurl = "https://cors-anywhere.herokuapp.com/";
-let posts = [];
-let postFetchUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=something&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`;
-console.log(postFetchUrl)
-/* fetch(proxyurl + postFetchUrl)
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(json) {
 
-    posts = json.results;
-    console.log(myFavorite);
-  });
-
-  function appendFavorites(posts) {
-   let htmlTemplate = "";
-   for (let post of posts) {
-     console.log("OK3");
-     let image = "";
-   if (post.photos){image = post.photos[0].photo_reference}
-     htmlTemplate += `
-
-      <div class="tinder--card" id='${post.place_id}'>
-        <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA">
-        <h3>${post.name}</h3>
-        <p>Address: ${post.vicinity}</p>
-        <p>Rating: ${post.rating}</p>
-      </div>
-    `;
-  }
-  document.querySelector('#demo').innerHTML = htmlTemplate;
-}*/
-}
 }
 
 function clearAlert() {
