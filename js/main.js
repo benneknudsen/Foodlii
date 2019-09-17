@@ -207,21 +207,29 @@ function showPosition(position) {
       appendResults(posts);
     });
 
-    function appendResults(posts) {
-     let htmlTemplate = "";
-     for (let post of posts) {
-       console.log("OK3");
-       let image = "";
-     if (post.photos){image = post.photos[0].photo_reference}
-       htmlTemplate += `
+  function appendResults(posts) {
+    let htmlTemplate = "";
+    for (let post of posts) {
+      console.log("OK3");
+      let image = "";
+      if (post.photos) {
+        image = post.photos[0].photo_reference
+      }
+      htmlTemplate += `
 
         <div class="tinder--card" id='${post.place_id}'>
-          <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA">
+        <div class="card-img-container">
+          <img class="card-img" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA">
+          <div class="card-information">
           <h3>${post.name}</h3>
-          <p>Address: ${post.vicinity}</p>
           <p>Rating: ${post.rating}</p>
+          </div>
+          </div>
+        </div>
         </div>
       `;
+
+      // <p>Address: ${post.vicinity}</p>
     }
     document.querySelector('#demo').innerHTML = htmlTemplate;
   }
@@ -233,112 +241,112 @@ function showPosition(position) {
 }); */
 
 //fetch favorites
- function fetchfavorites() {
-   let docRef = db.collection("users").doc("Dr2sskFU6Kfz1xiVwlEMwwLJXWP2");
-   let filteredFavorites;
-   docRef.get().then(function(doc) {
-       if (doc.exists) {
-         filteredFavorites = doc.data();
-           console.log("Document data:", filteredFavorites)
-           ;
-       } else {
-           // doc.data() will be undefined in this case
-           console.log("No such document!");
-       }
-   }).catch(function(error) {
-       console.log("Error getting document:", error);
-   });
- for (let filteredFavorite of filteredFavorites) {
-const proxyurl = "https://cors-anywhere.herokuapp.com/";
-let posts = [];
-let postFetchUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=something&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`;
-console.log(postFetchUrl)
-/* fetch(proxyurl + postFetchUrl)
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(json) {
-
-    posts = json.results;
-    console.log(myFavorite);
+function fetchfavorites() {
+  let docRef = db.collection("users").doc("Dr2sskFU6Kfz1xiVwlEMwwLJXWP2");
+  let filteredFavorites;
+  docRef.get().then(function(doc) {
+    if (doc.exists) {
+      filteredFavorites = doc.data();
+      console.log("Document data:", filteredFavorites);
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  }).catch(function(error) {
+    console.log("Error getting document:", error);
   });
+  for (let filteredFavorite of filteredFavorites) {
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    let posts = [];
+    let postFetchUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=something&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`;
+    console.log(postFetchUrl)
+    /* fetch(proxyurl + postFetchUrl)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(json) {
 
-  function appendFavorites(posts) {
-   let htmlTemplate = "";
-   for (let post of posts) {
-     console.log("OK3");
-     let image = "";
-   if (post.photos){image = post.photos[0].photo_reference}
-     htmlTemplate += `
+        posts = json.results;
+        console.log(myFavorite);
+      });
 
-      <div class="tinder--card" id='${post.place_id}'>
-        <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA">
-        <h3>${post.name}</h3>
-        <p>Address: ${post.vicinity}</p>
-        <p>Rating: ${post.rating}</p>
-      </div>
-    `;
+      function appendFavorites(posts) {
+       let htmlTemplate = "";
+       for (let post of posts) {
+         console.log("OK3");
+         let image = "";
+       if (post.photos){image = post.photos[0].photo_reference}
+         htmlTemplate += `
+
+          <div class="tinder--card" id='${post.place_id}'>
+            <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA">
+            <h3>${post.name}</h3>
+            <p>Address: ${post.vicinity}</p>
+            <p>Rating: ${post.rating}</p>
+          </div>
+        `;
+      }
+      document.querySelector('#demo').innerHTML = htmlTemplate;
+    }*/
   }
-  document.querySelector('#demo').innerHTML = htmlTemplate;
-}*/
-}
 }
 
 function clearAlert() {
   alert("Your discover history has been cleared");
 }
-function tinder(){
-var tinderContainer = document.querySelector('.tinder');
-var allCards = document.querySelectorAll('.tinder--card');
-var nope = document.getElementById('nope');
-var love = document.getElementById('love');
 
-function initCards(card, index) {
-  var newCards = document.querySelectorAll('.tinder--card:not(.removed)');
+function tinder() {
+  var tinderContainer = document.querySelector('.tinder');
+  var allCards = document.querySelectorAll('.tinder--card');
+  var nope = document.getElementById('nope');
+  var love = document.getElementById('love');
 
-  newCards.forEach(function (card, index) {
-    card.style.zIndex = allCards.length - index;
-    card.style.transform = 'scale(' + (20 - index) / 20 + ') translateY(-' + 30 * index + 'px)';
-    card.style.opacity = (10 - index) / 10;
-  });
+  function initCards(card, index) {
+    var newCards = document.querySelectorAll('.tinder--card:not(.removed)');
 
-  tinderContainer.classList.add('loaded');
-}
-initCards();
+    newCards.forEach(function(card, index) {
+      card.style.zIndex = allCards.length - index;
+      card.style.transform = 'scale(' + (20 - index) / 20 + ') translateY(-' + 30 * index + 'px)';
+      card.style.opacity = (10 - index) / 10;
+    });
+
+    tinderContainer.classList.add('loaded');
+  }
+  initCards();
 
 
 
 
-function createButtonListener(love) {
-  return function (event) {
-    var cards = document.querySelectorAll('.tinder--card:not(.removed)');
-    var moveOutWidth = document.body.clientWidth * 1.5;
+  function createButtonListener(love) {
+    return function(event) {
+      var cards = document.querySelectorAll('.tinder--card:not(.removed)');
+      var moveOutWidth = document.body.clientWidth * 1.5;
 
-    if (!cards.length) return false;
+      if (!cards.length) return false;
 
-    var card = cards[0];
+      var card = cards[0];
 
-    card.classList.add('removed');
-    if (love) {
-      card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
-      console.log("liked")
-      saveRestaurant(card.id)
-    } else {
-      card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
-      console.log("disliked")
-    }
+      card.classList.add('removed');
+      if (love) {
+        card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
+        console.log("liked")
+        saveRestaurant(card.id)
+      } else {
+        card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
+        console.log("disliked")
+      }
 
-    initCards();
+      initCards();
 
-    event.preventDefault();
-  };
-}
+      event.preventDefault();
+    };
+  }
 
-var nopeListener = createButtonListener(false);
-var loveListener = createButtonListener(true);
+  var nopeListener = createButtonListener(false);
+  var loveListener = createButtonListener(true);
 
-nope.addEventListener('click', nopeListener);
-love.addEventListener('click', loveListener);
+  nope.addEventListener('click', nopeListener);
+  love.addEventListener('click', loveListener);
 }
 
 //timeout
