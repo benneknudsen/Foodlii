@@ -325,6 +325,10 @@ open = "Closed";
            if (favorites.result.opening_hours.open_now){open = 'Open'} else {
            open = "Closed";
            }
+           let website ="";
+           if (favorites.result.website){website = `${favorites.result.website}`} else {
+           website = "No website";
+           }
 
              document.querySelector('#detailedView').innerHTML += `
               <section id="button_${favorites.result.place_id}" class="page">
@@ -332,7 +336,11 @@ open = "Closed";
               <h3>${favorites.result.name}</h3>
               <p>${rating}</p>
               <img src="${image}">
-              <p>${favorites.result.opening_hours[0].weekday_text}</p>
+              <p>${open}</p>
+              <p>${favorites.result.formatted_address}</p>
+              <p>${favorites.result.formatted_phone_number}</p>
+              <p>${website}</p>
+              <a href="https://www.google.com/maps/dir/?api=1&origin=Space+Needle+Seattle+WA&destination=${favorites.result.geometry.location.lat},${favorites.result.geometry.location.lng}">try me</a>
 
               </section>
 
