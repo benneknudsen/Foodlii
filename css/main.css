@@ -604,6 +604,31 @@ max-width: 100px;
   color: #FA7F48;
 }
 
+
+.detail {
+  text-align: center;
+  margin-top: 30px;
+  background-color: #fff;
+  width: 93vw;
+  max-width: 400px;
+}
+
+.detailimg {
+  width: 100%;
+  overflow: hidden;
+}
+
+.detailimg img {
+  max-width: 100%;
+}
+
+.fa-clock
+.fa-map-marker-alt
+.fa-phone {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
   .logo {
     width: 95px;
 
