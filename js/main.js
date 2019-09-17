@@ -284,7 +284,6 @@ rating ="No rating"
        rating ="No rating"
              }
              let open ="";
-             console.log(favorites.result.opening_hours.open_now);
              if (favorites.result.opening_hours.open_now){open = 'Open'} else {
 open = "Closed";
 }
@@ -310,11 +309,33 @@ open = "Closed";
 
           function appendDetails(favorites) {
            let htmlTemplate = "";
-           console.log(favorites);
-             let image = "";
-           if (favorites.result.photos){image = favorites.result.photos[0].photo_reference}
+           let image = "";
+           let rating= "";
+           if (favorites.result.photos) {
+             image = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${favorites.result.photos[0].photo_reference}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`
+           } else {
+           image ="billeder/nophoto.png"
+           }
+           if (favorites.result.rating) {
+             rating = `${favorites.result.rating}`
+           } else {
+           rating ="No rating"
+           }
+           let open ="";
+           if (favorites.result.opening_hours.open_now){open = 'Open'} else {
+           open = "Closed";
+           }
+
              document.querySelector('#detailedView').innerHTML += `
-              <section id="button_${favorites.result.place_id}" class="page">why is this shit not working what the fuck is the problem${favorites.result.name}</section>
+              <section id="button_${favorites.result.place_id}" class="page">
+
+              <h3>${favorites.result.name}</h3>
+              <p>${rating}</p>
+              <img src="${image}">
+              <p>${favorites.result.opening_hours[0].weekday_text}</p>
+
+              </section>
+
             `;
         }
            ;
