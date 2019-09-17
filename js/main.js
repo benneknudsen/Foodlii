@@ -270,25 +270,25 @@ rating ="No rating"
           }
             function appendFavorites(favorites) {
              let htmlTemplate = "";
-             console.log(favorites);
-               let image = "";
-               let rating= "";
-               if (favorites.result.photos) {
-                 image = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${favorites.result.photos[0].photo_reference}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`
-               } else {
-         image ="billeder/nophoto.png"
-               }
-               if (favorites.result.rating) {
-                 rating = `${favorites.result.rating}`
-               } else {
-         rating ="No rating"
-               }
-               let open ="";
-               console.log(favorites.result.opening_hours.open_now);
-               if (favorites.result.opening_hours.open_now){open = 'Open'} else {
-  open = "Closed";
+
+             let image = "";
+             let rating= "";
+             if (favorites.result.photos) {
+               image = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${favorites.result.photos[0].photo_reference}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`
+             } else {
+       image ="billeder/nophoto.png"
+             }
+             if (favorites.result.rating) {
+               rating = `${favorites.result.rating}`
+             } else {
+       rating ="No rating"
+             }
+             let open ="";
+             console.log(favorites.result.opening_hours.open_now);
+             if (favorites.result.opening_hours.open_now){open = 'Open'} else {
+open = "Closed";
 }
-            // if (favorites.result.photos){image = favorites.result.photos[0].photo_reference}
+
                document.querySelector('#fetchfavorite').innerHTML += `
 
                 <div class="fav-container">
@@ -298,9 +298,8 @@ rating ="No rating"
                 <div class="fav-image" onclick="showPage('button_${favorites.result.place_id}')">
                   <img src="${image}">
                 </div>
-                <div class="fav-name">
-                  <p class="big-text">${favorites.result.name} <br> ${open}</p>
                 <div class="fav-name" onclick="showPage('button_${favorites.result.place_id}')">
+                <p class="big-text">${favorites.result.name} <br> ${open}</p>
                 </div>
                 <div>
                 <i class="fas fa-angle-right"  onclick="showPage('button_${favorites.result.place_id}')" ></i>
