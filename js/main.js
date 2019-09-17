@@ -203,17 +203,25 @@ function showPosition(position) {
     for (let post of posts) {
       console.log("OK3");
       let image = "";
+      let rating = "";
       if (post.photos) {
-        image = post.photos[0].photo_reference
+        image = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${post.photos[0].photo_reference}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`
+      } else {
+image ="https://cdnimg.webstaurantstore.com/images/products/large/51590/1708508.jpg"
+      }
+      if (post.rating) {
+        rating = `${post.rating}`
+      } else {
+rating ="No rating"
       }
       htmlTemplate += `
 
         <div class="tinder--card" id='${post.place_id}'>
         <div class="card-img-container">
-          <img class="card-img" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA">
+          <img class="card-img" src="${image}">
           <div class="card-information">
           <h3>${post.name}</h3>
-          <p>Rating: <span>${post.rating} </span></p>
+          <p>Rating: <span>${rating} </span></p>
           </div>
           </div>
         </div>
