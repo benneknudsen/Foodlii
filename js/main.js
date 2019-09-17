@@ -288,9 +288,8 @@ rating ="No rating"
                   <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA">
                 </div>
                 <div class="fav-name">
-                  <p class="big-text">${favorites.result.name} <br>  ${open}</p>
+                  <p class="big-text">${favorites.result.name} <br> ${open}</p>
                 <div class="fav-name" onclick="showPage('button_${favorites.result.place_id}')">
-                  <p class="big-text">${favorites.result.name} <br>  "Open/closed"</p>
                 </div>
                 <div>
                 <i class="fas fa-angle-right"  onclick="showPage('button_${favorites.result.place_id}')" ></i>
