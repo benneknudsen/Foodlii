@@ -7,5 +7,4 @@
 
 
                                                   3 Semester Project
-=======
->>>>>>> Stashed changes
+
