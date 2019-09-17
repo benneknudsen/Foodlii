@@ -277,8 +277,6 @@ function showPosition(position) {
                 <div>
                   <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA">
                   <h3>${favorites.result.name}</h3>
-                  <p>Address: ${favorites.result.vicinity}</p>
-                  <p>Rating: ${favorites.result.rating}</p>
                 </div>
               `;
 
