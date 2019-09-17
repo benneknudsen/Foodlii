@@ -238,17 +238,10 @@ function showPosition(position) {
         </div>
         </div>
       `;
-
-      // <p>Address: ${post.vicinity}</p>
     }
     document.querySelector('#demo').innerHTML = htmlTemplate;
   }
 }
-/* userRef.onSnapshot(function(snapshotData) {
-  let myFavorites = snapshotData.docs;
-//  fetchfavorites(myFavorites);
-  console.log(myFavorites);
-}); */
 
 //fetch favorites
 function fetchfavorites() {

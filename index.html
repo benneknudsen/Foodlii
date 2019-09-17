@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -14,8 +13,8 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
 
 
@@ -25,7 +24,7 @@
   <!-- tabbar navigation -->
   <nav id="tabbar" class="tabbar hide">
     <a href="#settings" onclick="showPage('settings')"><i class="far fa-user"></i></a>
-<a href="#home" onclick="showPage('home')"><img src="billeder/logo.png" img draggable="false" class="logo" alt="Foodlii-Logo"></a></li>
+    <a href="#home" onclick="showPage('home')"><img src="billeder/logo.png" img draggable="false" class="logo" alt="Foodlii-Logo"></a></li>
     <a href="#favorites" onclick="showPage('favorites')"><i class="far fa-list-alt"></i></a>
   </nav>
   <!-- pages -->
@@ -33,7 +32,7 @@
   <section id="settings" class="page">
     <div class="looogin">
       <img src="billeder/profile.png" img draggable="false" class="profile_user" alt="User-Profile">
-</div>
+    </div>
     </div>
     <div id="profile" class="profile">
     </div>
@@ -44,10 +43,7 @@
     <div class="searcharea">
       <p>Search Area <span id="demo2"></span></p>
       <div class="slidecontainer">
-
-
         <input type="range" min="100" max="5000" step="100" value="2500" class="slider" id="myRange" onchange="getLocation()">
-
       </div>
     </div>
     <div class="location">
@@ -93,43 +89,44 @@
       <button>
         <p>Terms of Use</p>
     </div>
-
   </section>
 
   <!-- Home page -->
   <section id="home" class="page">
-      <i onclick="document.location.reload(true)" class="fas fa-redo"><br><p class="reload_text">Reload page for more restaurants</p></i>
+    <i onclick="document.location.reload(true)" class="fas fa-redo"><br>
+      <p class="reload_text">Reload page for more restaurants</p>
+      <p class="reminder">Also remember to turn on location in your browser settings in order to find restaurants</p>
+    </i>
     <div class="tinder">
       <div class="tinder--status">
         <i class="fas fa-times"></i>
         <i class="fa fa-heart"></i>
       </div>
       <div class="tinder--cards" id="demo">
+      </div>
+      <div class="tinder--buttons">
+        <button id="nope"><i class="fas fa-times"></i></button>
+        <button id="love"><i class="fa fa-heart"></i></button>
+      </div>
     </div>
-    <div class="tinder--buttons">
-      <button id="nope"><i class="fas fa-times"></i></button>
-      <button id="love"><i class="fa fa-heart"></i></button>
-    </div>
-    </div>
-
   </section>
 
   <!-- Favorites page -->
 
   <section id="favorites" class="page">
-<div id="fetchfavorite"></div>
+    <div id="fetchfavorite"></div>
   </section>
 
   <section id="login" class="page">
     <div class="looogin">
       <img src="billeder/logo.png" img draggable="false" class="loogin" alt="Foodlii-Logo">
-</div>
+    </div>
     <!-- firebase auth container  -->
     <section id="firebaseui-auth-container"></section>
   </section>
-<section id="detailedView">
+  <section id="detailedView">
 
-</section>
+  </section>
   <!-- loader  -->
   <div id="loader">
     <div class="spinner"></div>
