@@ -342,7 +342,7 @@ open = "Closed";
               <p>${favorites.result.formatted_phone_number}</p>
               <p>${website}</p>
               <a href="https://www.google.com/maps/dir/?api=1&origin=&destination=${favorites.result.geometry.location.lat},${favorites.result.geometry.location.lng}">try me</a>
-
+<i class="fas fa-angle-right"  onclick="showPage('favorites')" ></i>
               </section>
 
             `;
