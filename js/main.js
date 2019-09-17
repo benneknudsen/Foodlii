@@ -210,7 +210,7 @@ function showPosition(position) {
       if (post.photos) {
         image = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${post.photos[0].photo_reference}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`
       } else {
-image ="https://cdnimg.webstaurantstore.com/images/products/large/51590/1708508.jpg"
+image ="billeder/nophoto.png"
       }
       if (post.rating) {
         rating = `${post.rating}`
