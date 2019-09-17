@@ -72,6 +72,9 @@ header {
   text-align: center;
   overflow: hidden;
   border-bottom: 1px solid #555;
+  position: fixed;
+  top: 0;
+  z-index: 999;
 }
 
 /* Style the links inside the navigation bar */
