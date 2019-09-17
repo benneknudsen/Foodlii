@@ -277,12 +277,12 @@ rating ="No rating"
 
                 <div class="fav-container">
                 <div>
-<i class="fas fa-trash" onclick="removeFromFavourites('${favorites.result.place_id}')"></i>
+                <i class="fas fa-trash" onclick="removeFromFavourites('${favorites.result.place_id}')"></i>
                 </div>
-                <div class="fav-image">
+                <div class="fav-image" onclick="showPage('button_${favorites.result.place_id}')">
                   <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA">
                 </div>
-                <div class="fav-name">
+                <div class="fav-name" onclick="showPage('button_${favorites.result.place_id}')">
                   <p class="big-text">${favorites.result.name} <br>  "Open/closed"</p>
                 </div>
                 <div>
