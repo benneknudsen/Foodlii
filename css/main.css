@@ -59,13 +59,6 @@ header {
   position: relative;
 }
 
-.loogin {
-  max-width: 200px;
-}
-
-.profile_user {
-  max-width: 100px;
-}
 
 .looogin {
   text-align: center;
@@ -185,11 +178,32 @@ header {
   padding-top: 20px;
   position: relative;
   text-align: center;
+
 }
 
 .profile_img img {
   max-width: 150px;
   border-radius: 50%;
+}
+
+.loogin {
+max-width: 200px;
+}
+
+.profile_user {
+  padding-top: 20px;
+max-width: 100px;
+}
+
+.right {
+  text-decoration: none;
+  background-color: darkred; /* Green */
+  color: white;
+  padding: 15px 32px;
+  border-radius: 15px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
 }
 
 #preview-image {
@@ -204,6 +218,10 @@ header {
 
 .profile {
   text-align: center;
+}
+
+.profile h2 {
+  color: #FA7F48;
 }
 
 /* Settings styling */
@@ -239,7 +257,7 @@ header {
   width: 100%;
   height: 2px;
   border-radius: 2px;
-  background: #d3d3d3;
+  background: #FA7F48;
   outline: none;
   opacity: 0.7;
   -webkit-transition: .2s;
@@ -252,7 +270,7 @@ header {
   width: 17.5px;
   height: 17.5px;
   border-radius: 50%;
-  box-shadow: 0px 0px 5px 1px #555;
+  box-shadow: 0px 0px 2px 1px #555;
   background: #FA7F48;
   cursor: pointer;
 }
@@ -425,21 +443,32 @@ header {
 }
 
 .tinder--card h3 {
-  margin-top: 12px;
-  font-size: 32px;
-  padding: 0 16px;
+  margin: 0px;
+  font-size: 28px;
+  padding: 20px 16px;
   pointer-events: none;
   color: black;
   float: left;
   font-family: 'Lobster', cursive;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+
 }
 
 .tinder--card p {
-  margin-top: 30px;
+  margin: 0px;
   font-size: 15px;
-  padding: 0 16px;
+  padding: 20px 16px;
   pointer-events: none;
   float: right;
+}
+
+.tinder--card p span {
+  color: #FA7F48;
+  font-weight: 700;
 }
 
 .tinder--buttons {
@@ -498,6 +527,7 @@ header {
   background-color: rgba(255, 255, 255, 0.8);
   width: 100%;
   bottom: 10%;
+  display: flex;
 }
 
 /* =============== Favorite list styling ============= */
