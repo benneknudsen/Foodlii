@@ -274,9 +274,13 @@ function showPosition(position) {
              if (favorites.result.photos){image = favorites.result.photos[0].photo_reference}
                htmlTemplate += `
 
-                <div>
+                <div class="fav-container">
+                <div class="fav-image">
                   <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA">
-                  <h3>${favorites.result.name}</h3>
+                </div>
+                <div class="fav-name">
+                  <p><span class="big-text">${favorites.result.name}</span> <br>  "Open/closed"</p>
+                </div>
                 </div>
               `;
 

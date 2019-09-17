@@ -30,6 +30,7 @@ h1 {
 button {
   font-size: 16px;
 }
+
 /* ---------- Grid container ---------- */
 .grid-container {
   display: grid;
@@ -38,7 +39,7 @@ button {
 
 /* ---------- topbar styling ---------- */
 .topbar {
-    color: white;
+  color: white;
   padding: 11px;
 }
 
@@ -46,7 +47,6 @@ button {
   margin: 0;
   font-weight: 300;
 }
-
 
 /* ---------- header styling ---------- */
 header {
@@ -60,13 +60,12 @@ header {
 }
 
 .loogin {
-max-width: 200px;
+  max-width: 200px;
 }
 
 .profile_user {
-max-width: 100px;
+  max-width: 100px;
 }
-
 
 .looogin {
   text-align: center;
@@ -181,17 +180,14 @@ max-width: 100px;
   background-color: var(--green);
 }
 
-
-
 /* Styling of profile */
-
 .profile_img {
   padding-top: 20px;
   position: relative;
   text-align: center;
 }
 
-.profile_img img{
+.profile_img img {
   max-width: 150px;
   border-radius: 50%;
 }
@@ -211,15 +207,14 @@ max-width: 100px;
 }
 
 /* Settings styling */
-
 .discover h4 {
   margin: 0;
   padding: 20px 0px 10px 10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   text-align: left;
 }
-/* search area */
 
+/* search area */
 .searcharea {
   margin: 0;
   padding: 10px 10px 10px 10px;
@@ -233,9 +228,9 @@ max-width: 100px;
 }
 
 /* Styling of the slider */
-
 .slidecontainer {
-  width: 100%; /* Width of the outside container */
+  width: 100%;
+  /* Width of the outside container */
 }
 
 /* The slider itself */
@@ -271,7 +266,6 @@ max-width: 100px;
 }
 
 /* styling of current location in settings */
-
 .location {
   background-color: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -285,6 +279,7 @@ max-width: 100px;
 .location span {
   float: right;
 }
+
 .location div {
   font-size: 12px;
   float: right;
@@ -300,7 +295,6 @@ max-width: 100px;
 }
 
 /* Styling of clear discover history */
-
 .clear_history {
   background-color: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -315,10 +309,8 @@ max-width: 100px;
   text-align: left;
 }
 
-
 /* Styling of Contact and styling of law */
-
-.contact_law h4{
+.contact_law h4 {
   margin: 0;
   padding: 40px 0px 10px 10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -342,8 +334,12 @@ max-width: 100px;
   background-color: #fff;
   font-family: 'Montserrat', sans-serif;
 }
+
 /* Tinder cards */
-#home{overflow: hidden;}
+#home {
+  overflow: hidden;
+}
+
 .tinder {
   width: 100vw;
   height: 90vh;
@@ -373,7 +369,7 @@ max-width: 100px;
   font-size: 100px;
   opacity: 0;
   -webkit-transform: scale(0.3);
-          transform: scale(0.3);
+  transform: scale(0.3);
   transition: all 0.2s ease-in-out;
   position: absolute;
   width: 100px;
@@ -383,13 +379,13 @@ max-width: 100px;
 .tinder_love .fa-heart {
   opacity: 0.9;
   -webkit-transform: scale(1);
-          transform: scale(1);
+  transform: scale(1);
 }
 
 .tinder_nope .fa-times {
   opacity: 0.9;
   -webkit-transform: scale(1);
-          transform: scale(1);
+  transform: scale(1);
 }
 
 .tinder--cards {
@@ -401,7 +397,6 @@ max-width: 100px;
   align-items: flex-end;
   z-index: 1;
 }
-
 
 .tinder--card {
   display: inline-block;
@@ -415,7 +410,7 @@ max-width: 100px;
   position: absolute;
   will-change: transform;
   transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .moving.tinder--card {
@@ -437,7 +432,6 @@ max-width: 100px;
   color: black;
   float: left;
   font-family: 'Lobster', cursive;
-
 }
 
 .tinder--card p {
@@ -495,8 +489,8 @@ max-width: 100px;
 }
 
 .card-img-container {
-width: 600px;
-height: 600px;
+  width: 600px;
+  height: 600px;
 }
 
 .card-information {
@@ -506,29 +500,63 @@ height: 600px;
   bottom: 10%;
 }
 
-@media only screen and (min-width: 900px) {
- .logo {
-  width: 95px;
- }
+/* =============== Favorite list styling ============= */
+.fav-container {
+  background-color: white;
+  border-left: 2px solid grey;
+  border-right: 2px solid grey;
+  border-top: 2px solid grey;
+  font-family: Montserrat;
+  padding-top: 5px;
+  color: black;
+  display: flex;
+  padding-bottom: 5px;
+}
 
- .fa-user, .fa-list-alt {
-   font-size: 30px;
-
- }
-
+.fav-image {
+  display: inline-block;
+  position: relative;
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  border-radius: 50%;
+  left: 10px;
 
 }
 
+.fav-image img {
+  width: auto;
+  height: 100%;
+
+}
+
+.fav-name p {
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+.big-text {
+  font-size: 20px;
+}
+
+
+
+@media only screen and (min-width: 900px) {
+  .logo {
+    width: 95px;
+  }
+
+  .fa-user, .fa-list-alt {
+    font-size: 30px;
+  }
+}
 
 @media only screen and (max-width: 900px) {
- .logo {
-   width: 90px;
- }
+  .logo {
+    width: 90px;
+  }
 
- .fa-user, .fa-list-alt  {
-   font-size: 25px;
-
- }
-
-
+  .fa-user, .fa-list-alt {
+    font-size: 25px;
+  }
 }
