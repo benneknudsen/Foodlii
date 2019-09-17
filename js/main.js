@@ -101,8 +101,9 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 const db = firebase.firestore();
 const userRef = db.collection("users");
-function update(user){
-userRef.doc(userId).onSnapshot({
+
+function update(user) {
+  userRef.doc(userId).onSnapshot({
     includeMetadataChanges: true
   }, function(doc) {
     if (!doc.metadata.hasPendingWrites && doc.data()) {
@@ -111,6 +112,7 @@ userRef.doc(userId).onSnapshot({
     }
   });
 }
+
 function saveRestaurant(id) {
 
   db.collection("users").doc(userId).set({
@@ -211,12 +213,12 @@ function showPosition(position) {
       if (post.photos) {
         image = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${post.photos[0].photo_reference}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`
       } else {
-image ="billeder/nophoto.png"
+        image = "billeder/nophoto.png"
       }
       if (post.rating) {
         rating = `${post.rating}`
       } else {
-rating ="No rating"
+        rating = "No rating"
       }
       htmlTemplate += `
 
@@ -244,52 +246,55 @@ rating ="No rating"
 }); */
 
 //fetch favorites
- function fetchfavorites() {
-   let docRef = db.collection("users").doc(userId); //put userId here
-   let filteredFavorites;
-   docRef.get().then(function(doc) {
-       if (doc.exists) {
-         filteredFavorites = doc.data().myFavorites;
-           console.log("Document data:", filteredFavorites)
+function fetchfavorites() {
+  let docRef = db.collection("users").doc(userId); //put userId here
+  let filteredFavorites;
+  docRef.get().then(function(doc) {
+    if (doc.exists) {
+      filteredFavorites = doc.data().myFavorites;
+      console.log("Document data:", filteredFavorites)
 
-           for (let filteredFavorite of filteredFavorites) //go through the array and load each placeID separately
-            {
-              console.log(filteredFavorite);
-          const proxyurl = "https://cors-anywhere.herokuapp.com/";
-          let favorites = [];
-          let favoriteFetchUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${filteredFavorite}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`;
-          console.log(favoriteFetchUrl)
-          fetch(proxyurl + favoriteFetchUrl)
-            .then(function(response) {
-              return response.json();
-            })
-            .then(function(json) {
-              favorites = json;
-              appendFavorites(favorites);
-              appendDetails(favorites);
-            });
-          }
-            function appendFavorites(favorites) {
-             let htmlTemplate = "";
+      for (let filteredFavorite of filteredFavorites) //go through the array and load each placeID separately
+      {
+        console.log(filteredFavorite);
+        const proxyurl = "https://cors-anywhere.herokuapp.com/";
+        let favorites = [];
+        let favoriteFetchUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${filteredFavorite}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`;
+        console.log(favoriteFetchUrl)
+        fetch(proxyurl + favoriteFetchUrl)
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(json) {
+            favorites = json;
+            appendFavorites(favorites);
+            appendDetails(favorites);
+          });
+      }
 
-             let image = "";
-             let rating= "";
-             if (favorites.result.photos) {
-               image = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${favorites.result.photos[0].photo_reference}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`
-             } else {
-       image ="billeder/nophoto.png"
-             }
-             if (favorites.result.rating) {
-               rating = `${favorites.result.rating}`
-             } else {
-       rating ="No rating"
-             }
-             let open ="";
-             if (favorites.result.opening_hours.open_now){open = 'Open'} else {
-open = "Closed";
-}
+      function appendFavorites(favorites) {
+        let htmlTemplate = "";
 
-               document.querySelector('#fetchfavorite').innerHTML += `
+        let image = "";
+        let rating = "";
+        if (favorites.result.photos) {
+          image = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${favorites.result.photos[0].photo_reference}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`
+        } else {
+          image = "billeder/nophoto.png"
+        }
+        if (favorites.result.rating) {
+          rating = `${favorites.result.rating}`
+        } else {
+          rating = "No rating"
+        }
+        let open = "";
+        if (favorites.result.opening_hours.open_now) {
+          open = 'Open'
+        } else {
+          open = "Closed";
+        }
+
+        document.querySelector('#fetchfavorite').innerHTML += `
 
                 <div class="fav-container">
                 <div>
@@ -306,62 +311,66 @@ open = "Closed";
                 </div>
                 </div>
               `;
-          }
+      }
 
-          function appendDetails(favorites, position) {
-           let htmlTemplate = "";
-           let image = "";
-           let rating= "";
-           if (favorites.result.photos) {
-             image = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${favorites.result.photos[0].photo_reference}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`
-           } else {
-           image ="billeder/nophoto.png"
-           }
-           if (favorites.result.rating) {
-             rating = `${favorites.result.rating}`
-           } else {
-           rating ="No rating"
-           }
-           let open ="";
-           if (favorites.result.opening_hours.open_now){open = 'Open'} else {
-           open = "Closed";
-           }
-           let website ="";
-           if (favorites.result.website){website = `${favorites.result.website}`} else {
-           website = "No website";
-           }
+      function appendDetails(favorites, position) {
+        let htmlTemplate = "";
+        let image = "";
+        let rating = "";
+        if (favorites.result.photos) {
+          image = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${favorites.result.photos[0].photo_reference}&key=AIzaSyD7CULsQgweSRCbd3f2g7a-I8KOW99p4DA`
+        } else {
+          image = "billeder/nophoto.png"
+        }
+        if (favorites.result.rating) {
+          rating = `${favorites.result.rating}`
+        } else {
+          rating = "No rating"
+        }
+        let open = "";
+        if (favorites.result.opening_hours.open_now) {
+          open = 'Open'
+        } else {
+          open = "Closed";
+        }
+        let website = "";
+        if (favorites.result.website) {
+          website = `${favorites.result.website}`
+        } else {
+          website = "No website";
+        }
 
-             document.querySelector('#detailedView').innerHTML += `
+        document.querySelector('#detailedView').innerHTML += `
               <section id="button_${favorites.result.place_id}" class="page">
-<div>
+              <div class="detail">
+                <div class="detailimg">
+                  <img src="${image}">
+                </div>
               <h3>${favorites.result.name}</h3>
               <p>${rating} out of 5 (${favorites.result.user_ratings_total} ratings)</p>
-              <div class="detailimg">
-              <img src="${image}">
-              </div>
               <p>${open}</p>
               <p>${favorites.result.formatted_address}</p>
               <p>${favorites.result.formatted_phone_number}</p>
               <a href="${website}">Website</a>
               <a href="https://www.google.com/maps/dir/?api=1&origin=&destination=${favorites.result.geometry.location.lat},${favorites.result.geometry.location.lng}">try me</a>
-<i class="fas fa-angle-right"  onclick="showPage('favorites')" ></i>
-</div>
+              <i class="fas fa-angle-right"  onclick="showPage('favorites')" ></i>
+              </div>
               </section>
 
             `;
-        }
-           ;
-       } else {
-           // doc.data() will be undefined in this case
-           console.log("No such document!");
-       }
-   }).catch(function(error) {
-       console.log("Error getting document:", error);
-   });
+      };
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  }).catch(function(error) {
+    console.log("Error getting document:", error);
+  });
 
 }
-function emtpyTemplate(){
-                document.querySelector("#fetchfavorite").innerHTML = "";
+
+function emtpyTemplate() {
+  document.querySelector("#fetchfavorite").innerHTML = "";
 }
 
 function clearAlert() {
