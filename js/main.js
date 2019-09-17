@@ -275,7 +275,7 @@ rating ="No rating"
              if (favorites.result.photos){image = favorites.result.photos[0].photo_reference}
                document.querySelector('#fetchfavorite').innerHTML += `
 
-                <div onclick="showPage('button_${favorites.result.place_id}')" class="fav-container">
+                <div class="fav-container">
                 <div>
 <i class="fas fa-trash" onclick="removeFromFavourites('${favorites.result.place_id}')"></i>
                 </div>
@@ -286,7 +286,7 @@ rating ="No rating"
                   <p class="big-text">${favorites.result.name} <br>  "Open/closed"</p>
                 </div>
                 <div>
-                <i class="fas fa-angle-right"></i>
+                <i class="fas fa-angle-right"  onclick="showPage('button_${favorites.result.place_id}')" ></i>
                 </div>
                 </div>
               `;
