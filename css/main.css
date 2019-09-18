@@ -15,7 +15,6 @@ html {
   height: 100%;
   width: 100%;
   font-weight: 200;
-
 }
 
 a {
@@ -65,7 +64,6 @@ header {
   position: relative;
 }
 
-
 .looogin {
   text-align: center;
 }
@@ -107,13 +105,13 @@ header {
 }
 
 ::-webkit-scrollbar {
-display: none;
+  display: none;
 }
+
 /* ---------- page styling ---------- */
 .page {
   padding-top: 70px;
   display: none;
-  height: 90vh;
   background: var(--light-grey);
   animation: fadeIn 0.4s;
 }
@@ -192,7 +190,6 @@ display: none;
   padding-top: 20px;
   position: relative;
   text-align: center;
-
 }
 
 .profile_img img {
@@ -201,29 +198,28 @@ display: none;
 }
 
 .loogin {
-max-width: 200px;
+  max-width: 200px;
 }
 
 .profile_user {
   padding-top: 20px;
-max-width: 100px;
+  max-width: 100px;
 }
 
 .right {
   text-decoration: none;
-  background-color: darkred; /* Green */
+  background-color: darkred;
+  /* Green */
   color: white;
   padding: 15px 32px;
   border-radius: 15px;
   text-align: center;
   display: inline-block;
   font-size: 16px;
-
-
 }
 
 .right:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 #preview-image {
@@ -437,9 +433,9 @@ max-width: 100px;
 
 .tinder--card {
   display: inline-block;
-  width: 93vw;
+  width: 92vw;
   max-width: 400px;
-  height: 65vh;
+  height: 62vh;
   background: #FFFFFF;
   padding-bottom: 0px;
   border-radius: 8px;
@@ -474,7 +470,6 @@ max-width: 100px;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;
-
 }
 
 .tinder--card p {
@@ -491,19 +486,19 @@ max-width: 100px;
 }
 
 .tinder--buttons {
-  flex: 0 0 100px;
+  flex: 0 100px;
   text-align: center;
   padding-top: 20px;
 }
 
 .tinder--buttons button {
   border-radius: 50%;
-  line-height: 60px;
-  width: 65px;
+  line-height: 65px;
+  width: 70px;
   border: 0;
   background: #FFFFFF;
   display: inline-block;
-  margin: 0 55px;
+  margin: 0 50px;
   cursor: pointer;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
@@ -518,6 +513,7 @@ max-width: 100px;
 
 .tinder--buttons i {
   font-size: 38px;
+  margin: auto;
   vertical-align: middle;
 }
 
@@ -539,8 +535,6 @@ max-width: 100px;
   height: 100%;
   object-fit: cover;
 }
-
-
 
 .card-information {
   position: absolute;
@@ -570,16 +564,14 @@ max-width: 100px;
   border-radius: 50%;
   left: 20px;
   box-shadow: 0px 0px 2px #555;
-
 }
 
 .fav-image img {
   width: 100%;
   height: 100%;
-
 }
 
-.fav-name  {
+.fav-name {
   margin-left: 30px;
   font-size: 14px;
   white-space: nowrap;
@@ -612,16 +604,14 @@ max-width: 100px;
   color: #FA7F48;
 }
 
-
 .detail {
   background-color: #fff;
   padding-bottom: 50px;
-
 }
 
 .detailtext {
-  text-align: left;
   padding: 0px 20px;
+  text-align: left;
 }
 
 .detailtext h3 {
@@ -638,8 +628,9 @@ max-width: 100px;
   box-shadow: 0px 0px 5px #555;
 }
 
-.page detail_container {
-  text-align: center;
+.detail_container {
+  max-width: 400px;
+  margin: auto;
 }
 
 .detailtext i {
@@ -647,7 +638,7 @@ max-width: 100px;
   padding-right: 15px;
 }
 
-.klode  {
+.klode {
   font-size: 20px;
   padding-right: 0px;
 }
@@ -656,25 +647,34 @@ max-width: 100px;
   text-decoration: underline;
 }
 
-  .logo {
-    width: 95px;
+.logo {
+  width: 95px;
+}
 
-  }
+.reload_text {
+  font-size: 24px;
+}
 
-  .reload_text {
-    font-size: 24px;
-  }
+.reminder {
+  font-family: Montserrat;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-align: center;
+  max-width: 350px;
+  margin: auto;
+  color: #555;
+}
 
-  .fa-redo {
-    position: absolute;
-    top: 50%;
+.fa-redo {
+  position: absolute;
+  top: 50%;
   left: 50%;
   text-align: center;
   transform: translate(-50%, -50%);
   font-size: 100px;
   color: #FA7F48;
-  }
+}
 
-  .fa-user, .fa-list-alt {
-    font-size: 30px;
-  }
+.fa-user, .fa-list-alt {
+  font-size: 30px;
+}
